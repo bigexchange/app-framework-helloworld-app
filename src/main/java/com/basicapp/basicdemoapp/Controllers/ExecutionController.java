@@ -21,7 +21,7 @@ public class ExecutionController extends AbstractExecutionController{
     }
 
     @Override
-    public ResponseEntity<ActionResponseDetails> postResponse(@RequestBody ExecutionContext executionContext) {
+    public ResponseEntity<ActionResponseDetails> executeAction(@RequestBody ExecutionContext executionContext) {
         String action = executionContext.getActionName();
         String executionId = executionContext.getExecutionId();
         switch (action) {
