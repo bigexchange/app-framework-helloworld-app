@@ -18,11 +18,11 @@
       "is_sync": "true",
       "action_params": [
         {
-          "param_name": "webhookurl",
+          "param_name": "idConnectionName",
           "param_type": "String",
           "is_cleartext": true,
-          "param_description": "Webhook Url, is the endpoint where slack will send its message to",
-          "default_value": "webhook",
+          "param_description": "An Entity source connection name, which we want to receive",
+          "default_value": "identity source",
           "param_priority": "primary"
         }
       ]
@@ -31,14 +31,6 @@
       "action_id": "asyncAction",
       "is_sync": "true",
       "action_params": [
-        {
-          "param_name": "webhookurl",
-          "param_type": "String",
-          "is_cleartext": true,
-          "param_description": "Webhook Url, is the endpoint where slack will send its message to",
-          "default_value": "webhook",
-          "param_priority": "primary"
-        }
       ]
     }
   ]
