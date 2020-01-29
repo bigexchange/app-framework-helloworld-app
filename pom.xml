@@ -32,35 +32,46 @@
 				<exclusion>
 					<groupId>org.junit.vintage</groupId>
 					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
 
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>2.9.2</version>
-		</dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
 
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.9.2</version>
-		</dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
 
-		<dependency>
-			<groupId>com.bigid.appinfra</groupId>
-			<artifactId>app-infrastructure</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+        <!--        Use this in order to get the infra from jfrog (internal BigID developer) -->
+        <!--        <dependency>-->
+        <!--            <groupId>com.bigid.appinfra</groupId>-->
+        <!--            <artifactId>app-infrastructure</artifactId>-->
+        <!--            <version>${project.version}</version>-->
+        <!--        </dependency>-->
 
-	</dependencies>
+        <!--        Use this in order to get the infra from local jar dependency (external BigID developer) -->
+        <dependency>
+            <groupId>com.bigid.appinfra</groupId>
+            <artifactId>app-infrastructure</artifactId>
+            <version>${project.version}</version>
+            <scope>system</scope>
+            <systemPath>
+                ${project.basedir}/src/main/resources/dependencies/app-infrastructure/0.0.1-SNAPSHOT/app-infrastructure-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+            </systemPath>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
