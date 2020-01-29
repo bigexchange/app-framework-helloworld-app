@@ -29,13 +29,6 @@
           "is_mandatory": false
         }
       ]
-    },
-    {
-      "action_id": "asyncAction",
-      "description": "acync action",
-      "is_sync": true,
-      "action_params": [
-      ]
     }
   ]
 }
