@@ -9,13 +9,15 @@
       "param_description": "Username",
       "default_value": "admin",
       "hint": "put username here",
-      "param_priority": "primary"
+      "param_priority": "primary",
+      "is_mandatory": false
     }
   ],
   "actions": [
     {
       "action_id": "helloWorld",
-      "is_sync": "true",
+      "description": "Hello world action",
+      "is_sync": true,
       "action_params": [
         {
           "param_name": "idConnectionName",
@@ -23,13 +25,15 @@
           "is_cleartext": true,
           "param_description": "An Entity source connection name, which we want to receive",
           "default_value": "identity source",
-          "param_priority": "primary"
+          "param_priority": "primary",
+          "is_mandatory": false
         }
       ]
     },
     {
       "action_id": "asyncAction",
-      "is_sync": "true",
+      "description": "acync action",
+      "is_sync": true,
       "action_params": [
       ]
     }

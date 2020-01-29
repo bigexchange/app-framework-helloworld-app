@@ -26,7 +26,7 @@ public class ExecutionService extends AbstractExecutionService {
         ActionResponseDetails actionResponseDetails = initializeResponse(executionContext,
                 StatusEnum.COMPLETED,
                 1,
-                "Sent list of entity sources connections to slack successfully!"
+                "logged list of entity sources connections successfully!"
         );
         bigIDProxy.updateActionStatusToBigID(actionResponseDetails);
     }
