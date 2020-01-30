@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ExecutionService extends AbstractExecutionService {
 
-    private final String ID_CONNECTIONS_ENDPOINT = "/id_connections";
+    private final String ID_CONNECTIONS_ENDPOINT = "id_connections";
 
     @Autowired
     public ExecutionService(BigIDProxy bigIDProxy) {
