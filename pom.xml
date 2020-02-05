@@ -68,7 +68,7 @@
             <version>${project.version}</version>
             <scope>system</scope>
             <systemPath>
-                ${project.basedir}/src/main/resources/dependencies/app-infrastructure/0.0.1-SNAPSHOT/app-infrastructure-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+                ${project.basedir}/src/main/resources/dependencies/app-infrastructure/0.0.2-SNAPSHOT/app-infrastructure-0.0.1-SNAPSHOT-jar-with-dependencies.jar
             </systemPath>
         </dependency>
     </dependencies>
