@@ -59,7 +59,7 @@
         <dependency>
             <groupId>com.bigid.appinfra</groupId>
             <artifactId>app-infrastructure</artifactId>
-            <version>0.0.4-SNAPSHOT</version>
+            <version>0.0.5-SNAPSHOT</version>
             <scope>system</scope>
             <systemPath>
                 ${project.basedir}/src/main/resources/dependencies/app-infrastructure/0.0.4-SNAPSHOT/app-infrastructure-0.0.4-SNAPSHOT-jar-with-dependencies.jar
