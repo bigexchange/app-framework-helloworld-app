@@ -29,6 +29,20 @@
           "is_mandatory": false
         }
       ]
+    },
+    {
+      "action_id": "uploadFile",
+      "description": "This demonstrates an upload of a file to BigID",
+      "is_sync": true,
+      "action_params": [
+      ]
+    },
+    {
+      "action_id": "counter",
+      "description": "This demonstrates a counter using the BigID App Framework",
+      "is_sync": true,
+      "action_params": [
+      ]
     }
   ]
 }

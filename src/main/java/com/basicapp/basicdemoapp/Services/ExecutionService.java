@@ -7,6 +7,9 @@ import com.bigid.appinfra.appinfrastructure.ExternalConnections.BigIDProxy;
 import com.bigid.appinfra.appinfrastructure.Services.AbstractExecutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import java.io.File;
 
 @Service
 public class ExecutionService extends AbstractExecutionService {
@@ -29,6 +32,25 @@ public class ExecutionService extends AbstractExecutionService {
                 "logged list of entity sources connections successfully!"
         );
         bigIDProxy.updateActionStatusToBigID(actionResponseDetails);
+    }
+
+    public void uploadFileToBigID(ExecutionContext executionContext){
+        File file = new File("/Users/nmiran/Desktop/test.txt");
+        bigIDProxy.uploadAttachment(file);
+    }
+
+    public int count(){
+        int counter;
+        String counterInString = bigIDProxy.getValueFromAppStorage("count");
+        if (StringUtils.isEmpty(counterInString)){
+            counter = 1;
+            bigIDProxy.saveInStorage("count","1");
+        } else {
+            counter = Integer.parseInt(counterInString);
+            counter++;
+            bigIDProxy.saveInStorage("count",Integer.toString(counter));
+        }
+        return counter;
     }
 
 }

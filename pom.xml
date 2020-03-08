@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.basicapp</groupId>
     <artifactId>basic-demo-app</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.5-SNAPSHOT</version>
     <name>basic-demo-app</name>
     <description>Demo project for Spring Boot</description>
 
@@ -49,22 +49,22 @@
         </dependency>
 
         <!--        Use this in order to get the infra from jfrog (internal BigID developer) -->
-        <!--                <dependency>-->
-        <!--                    <groupId>com.bigid.appinfra</groupId>-->
-        <!--                    <artifactId>app-infrastructure</artifactId>-->
-        <!--                    <version>${project.version}</version>-->
-        <!--                </dependency>-->
-
-        <!--        Use this in order to get the infra from local jar dependency (external BigID developer) -->
         <dependency>
             <groupId>com.bigid.appinfra</groupId>
             <artifactId>app-infrastructure</artifactId>
-            <version>0.0.4-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>
-                ${project.basedir}/src/main/resources/dependencies/app-infrastructure/0.0.4-SNAPSHOT/app-infrastructure-0.0.4-SNAPSHOT-jar-with-dependencies.jar
-            </systemPath>
+            <version>${project.version}</version>
         </dependency>
+
+        <!--        Use this in order to get the infra from local jar dependency (external BigID developer) -->
+<!--        <dependency>-->
+<!--            <groupId>com.bigid.appinfra</groupId>-->
+<!--            <artifactId>app-infrastructure</artifactId>-->
+<!--            <version>0.0.5-SNAPSHOT</version>-->
+<!--            <scope>system</scope>-->
+<!--            <systemPath>-->
+<!--                ${project.basedir}/src/main/resources/dependencies/app-infrastructure/0.0.5-SNAPSHOT/app-infrastructure-0.0.5-SNAPSHOT-jar-with-dependencies.jar-->
+<!--            </systemPath>-->
+<!--        </dependency>-->
     </dependencies>
 
 	<build>

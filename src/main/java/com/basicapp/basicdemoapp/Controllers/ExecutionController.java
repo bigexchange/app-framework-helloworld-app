@@ -26,6 +26,12 @@ public class ExecutionController extends AbstractExecutionController{
             case ("helloWorld"):
                 ((ExecutionService)executionService).sendIdConnections(executionContext);
                 return generateSyncSuccessMessage(executionId, "hello world!");
+            case ("uploadFile"):
+                ((ExecutionService)executionService).uploadFileToBigID(executionContext);
+                return generateSyncSuccessMessage(executionId, "hello world!");
+            case("counter"):
+                int count = ((ExecutionService)executionService).count();
+                return generateSyncSuccessMessage(executionId, "Counter is at: " + count);
             default:
                 return ResponseEntity.badRequest().body(
                         new ActionResponseDetails(executionId,
