@@ -6,10 +6,11 @@ import com.bigid.appinfra.appinfrastructure.DTO.StatusEnum;
 import com.bigid.appinfra.appinfrastructure.ExternalConnections.BigIDProxy;
 import com.bigid.appinfra.appinfrastructure.Services.AbstractExecutionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.io.File;
+import java.io.IOException;
 
 @Service
 public class ExecutionService extends AbstractExecutionService {
@@ -35,8 +36,12 @@ public class ExecutionService extends AbstractExecutionService {
     }
 
     public void uploadFileToBigID(ExecutionContext executionContext){
-        File file = new File("/Users/nmiran/Desktop/test.txt");
-        bigIDProxy.uploadAttachment(file);
+        ClassPathResource resource = new ClassPathResource("test.txt");
+        try {
+            bigIDProxy.uploadAttachment(resource.getFile());
+        } catch (IOException e){
+            System.out.println("Could not upload file");
+        }
     }
 
     public int count(){
