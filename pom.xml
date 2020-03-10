@@ -59,10 +59,10 @@
 <!--        <dependency>-->
 <!--            <groupId>com.bigid.appinfra</groupId>-->
 <!--            <artifactId>app-infrastructure</artifactId>-->
-<!--            <version>0.0.5-SNAPSHOT</version>-->
+<!--            <version>0.0.6-SNAPSHOT</version>-->
 <!--            <scope>system</scope>-->
 <!--            <systemPath>-->
-<!--                ${project.basedir}/src/main/resources/dependencies/app-infrastructure/0.0.5-SNAPSHOT/app-infrastructure-0.0.5-SNAPSHOT-jar-with-dependencies.jar-->
+<!--                ${project.basedir}/src/main/resources/dependencies/app-infrastructure/0.0.6-SNAPSHOT/app-infrastructure-0.0.6-SNAPSHOT-jar-with-dependencies.jar-->
 <!--            </systemPath>-->
 <!--        </dependency>-->
     </dependencies>
