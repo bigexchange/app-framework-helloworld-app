@@ -26,7 +26,7 @@ public class ExecutionController extends AbstractExecutionController{
             case ("helloWorld"):
                 ((ExecutionService)executionService).sendIdConnections(executionContext);
                 return generateSyncSuccessMessage(executionId, "hello world!");
-            case ("uploadFile"):
+            case ("sendFileToBigID"):
                 ((ExecutionService)executionService).uploadFileToBigID(executionContext);
                 return generateSyncSuccessMessage(executionId, "Test file uploaded successfully!");
             case("counter"):

@@ -31,7 +31,7 @@
       ]
     },
     {
-      "action_id": "uploadFile",
+      "action_id": "sendFileToBigID",
       "description": "This demonstrates an upload of a file to BigID",
       "is_sync": true,
       "action_params": [
