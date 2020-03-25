@@ -1,6 +1,10 @@
 {
   "app_name": "Basic demo app",
   "description": "The app is an app template, created for demonstrating the capabilities of such apps",
+  "category": "privacy",
+  "license_type":"PAID",
+  "vendor": "BigID",
+  "license_verification_key": "",
   "global_params": [
     {
       "param_name": "username",
@@ -9,6 +13,16 @@
       "param_description": "Username",
       "default_value": "admin",
       "hint": "put username here",
+      "param_priority": "primary",
+      "is_mandatory": false
+    },
+    {
+      "param_name": "password",
+      "param_type": "String",
+      "is_cleartext": false,
+      "param_description": "password",
+      "default_value": "admin",
+      "hint": "put password here",
       "param_priority": "primary",
       "is_mandatory": false
     }
@@ -22,7 +36,7 @@
         {
           "param_name": "idConnectionName",
           "param_type": "String",
-          "is_cleartext": true,
+          "is_cleartext": false,
           "param_description": "An Entity source connection name, which we want to receive",
           "default_value": "identity source",
           "param_priority": "primary",
