@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.basicapp</groupId>
     <artifactId>basic-demo-app</artifactId>
-    <version>0.0.6-SNAPSHOT</version>
+    <version>0.0.7-SNAPSHOT</version>
     <name>basic-demo-app</name>
     <description>Demo project for Spring Boot</description>
 
@@ -55,7 +55,7 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!--        Use this in order to get the infra from local jar dependency (external BigID developer) -->
+        <!--                Use this in order to get the infra from local jar dependency (external BigID developer)-->
 <!--        <dependency>-->
 <!--            <groupId>com.bigid.appinfra</groupId>-->
 <!--            <artifactId>app-infrastructure</artifactId>-->
@@ -67,15 +67,26 @@
 <!--        </dependency>-->
     </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>spring-boot</classifier>
+                            <mainClass>
+                                com.basicapp.basicdemoapp.BasicDemoAppApplication
+                            </mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
