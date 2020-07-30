@@ -57,6 +57,13 @@
       "is_sync": true,
       "action_params": [
       ]
+    },
+    {
+      "action_id": "customCredProvider",
+      "description": "Return username and password for mysql DB",
+      "is_sync": true,
+      "action_params": [
+      ]
     }
   ]
 }

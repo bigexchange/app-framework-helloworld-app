@@ -1,5 +1,6 @@
 package com.basicapp.basicdemoapp.Controllers;
 
+import com.basicapp.basicdemoapp.DTO.ActionResponseWithAdditionalDetails;
 import com.basicapp.basicdemoapp.Services.ExecutionService;
 import com.bigid.appinfra.appinfrastructure.Controllers.AbstractExecutionController;
 import com.bigid.appinfra.appinfrastructure.DTO.ActionResponseDetails;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.HashMap;
 
 @Controller
 public class ExecutionController extends AbstractExecutionController{
@@ -32,6 +35,12 @@ public class ExecutionController extends AbstractExecutionController{
             case("counter"):
                 int count = ((ExecutionService)executionService).count();
                 return generateSyncSuccessMessage(executionId, "Counter is at: " + count);
+            case("customCredProvider"):
+                HashMap additionalData = new HashMap();
+                additionalData .put("username", "bigid");
+                additionalData .put("password", "bigidsql");
+                return ResponseEntity.status(200).body(new ActionResponseWithAdditionalDetails(executionId,
+                    StatusEnum.COMPLETED, 1, "Sent Password Successfuly", additionalData));
             default:
                 return ResponseEntity.badRequest().body(
                         new ActionResponseDetails(executionId,
