@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.4.RELEASE</version>
-        <!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.basicapp</groupId>
     <artifactId>basic-demo-app</artifactId>
@@ -52,7 +52,7 @@
         <dependency>
             <groupId>com.bigid.appinfra</groupId>
             <artifactId>app-infrastructure</artifactId>
-            <version>${project.version}</version>
+            <version>0.0.6-SNAPSHOT</version>
         </dependency>
 
         <!--                Use this in order to get the infra from local jar dependency (external BigID developer)-->

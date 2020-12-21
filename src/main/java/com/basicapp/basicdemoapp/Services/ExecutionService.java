@@ -10,7 +10,9 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @Service
 public class ExecutionService extends AbstractExecutionService {
@@ -21,7 +23,6 @@ public class ExecutionService extends AbstractExecutionService {
     public ExecutionService(BigIDProxy bigIDProxy) {
         super(bigIDProxy);
     }
-
 
     public void sendIdConnections(ExecutionContext executionContext) {
         String idConnections = bigIDProxy.executeHttpGet(ID_CONNECTIONS_ENDPOINT);
@@ -36,11 +37,16 @@ public class ExecutionService extends AbstractExecutionService {
     }
 
     public void uploadFileToBigID(ExecutionContext executionContext){
-        ClassPathResource resource = new ClassPathResource("test.txt");
+        File file = new File("./test_file.txt");
         try {
-            bigIDProxy.uploadAttachment(resource.getFile());
+            file.createNewFile();
+            PrintWriter writer = new PrintWriter("./test_file.txt", "UTF-8");
+            writer.println("Test file uploaded!");
+            writer.close();
+
+            bigIDProxy.uploadAttachment(file);
         } catch (IOException e){
-            System.out.println("Could not upload file");
+            System.out.println("Could not upload file" + e.toString());
         }
     }
 
@@ -55,7 +61,7 @@ public class ExecutionService extends AbstractExecutionService {
             counter++;
             bigIDProxy.saveInStorage("count",Integer.toString(counter));
         }
+        System.out.println(counter);
         return counter;
     }
-
 }

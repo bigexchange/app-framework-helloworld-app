@@ -37,8 +37,8 @@ public class ExecutionController extends AbstractExecutionController{
                 return generateSyncSuccessMessage(executionId, "Counter is at: " + count);
             case("customCredProvider"):
                 HashMap additionalData = new HashMap();
-                additionalData .put("username", "bigid");
-                additionalData .put("password", "bigidsql");
+                additionalData.put("username", "bigid_username");
+                additionalData.put("password", "bigid_password");
                 return ResponseEntity.status(200).body(new ActionResponseWithAdditionalDetails(executionId,
                     StatusEnum.COMPLETED, 1, "Sent Password Successfuly", additionalData));
             default:

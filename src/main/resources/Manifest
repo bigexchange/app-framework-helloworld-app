@@ -65,5 +65,27 @@
       "action_params": [
       ]
     }
+  ],
+  "permissions": [
+    {
+      "action": "data-owner",
+      "label": "Data Owner",
+      "description": "This is an admin permission description"
+    },
+    {
+      "action": "auditor",
+      "label": "Auditor",
+      "description": "This is an owner permission description"
+    },
+    {
+      "action": "admin",
+      "label": "Admin",
+      "description": "This is an viewer permission description"
+    },
+    {
+      "action": "individual",
+      "label": "Individual",
+      "description": "This is an viewer permission description"
+    }
   ]
 }
