@@ -1,8 +1,9 @@
 {
   "app_name": "Basic demo app",
+  "version": "1.0.3",
   "description": "The app is an app template, created for demonstrating the capabilities of such apps",
   "category": "privacy",
-  "license_type":"PAID",
+  "license_type":"FREE",
   "vendor": "BigID",
   "license_verification_key": "",
   "global_params": [

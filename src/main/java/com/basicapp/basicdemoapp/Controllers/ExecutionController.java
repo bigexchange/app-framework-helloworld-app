@@ -5,6 +5,7 @@ import com.basicapp.basicdemoapp.Services.ExecutionService;
 import com.bigid.appinfra.appinfrastructure.Controllers.AbstractExecutionController;
 import com.bigid.appinfra.appinfrastructure.DTO.ActionResponseDetails;
 import com.bigid.appinfra.appinfrastructure.DTO.ExecutionContext;
+import com.bigid.appinfra.appinfrastructure.DTO.ParamDetails;
 import com.bigid.appinfra.appinfrastructure.DTO.StatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -37,8 +38,10 @@ public class ExecutionController extends AbstractExecutionController{
                 return generateSyncSuccessMessage(executionId, "Counter is at: " + count);
             case("customCredProvider"):
                 HashMap additionalData = new HashMap();
-                additionalData.put("username", "bigid_username");
-                additionalData.put("password", "bigid_password");
+                additionalData.put("username", "bigid_tests");
+                additionalData.put("password", "bigid_tests");
+                putCredentialProviderCustomQuery(executionContext, additionalData);
+
                 return ResponseEntity.status(200).body(new ActionResponseWithAdditionalDetails(executionId,
                     StatusEnum.COMPLETED, 1, "Sent Password Successfuly", additionalData));
             default:
@@ -48,5 +51,17 @@ public class ExecutionController extends AbstractExecutionController{
                                 0d,
                                 "Got unresolved action = " + action));
         }
+    }
+
+    private void putCredentialProviderCustomQuery(ExecutionContext executionContext, HashMap additionalData) {
+        try {
+             ParamDetails param = executionContext.getActionParams().get(0);
+             if (param.getParamName().equals("credentialProviderCustomQuery")){
+                 additionalData.put("username", "bigid");
+                 additionalData.put("password", "bigidsql");
+             }
+         } catch (IndexOutOfBoundsException e) {
+             System.out.println("Did not receive credentialProviderCustomQuery param");
+         }
     }
 }
