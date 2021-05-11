@@ -7,10 +7,12 @@ The application can be taken and used as a reference for building your own custo
 - In order to build and run the application, you will need Docker.
 
 ## Running the application
-In order to create the docker image, you should run the command:
-``docker build -t bigexchange/basic-demo-application:latest .`` when you are in the root directory of the repository.
+* In order to create the docker image, you should run the following command when you are in the root directory of the repository:
 
-Once the image is created, you should run the image with the command:
+``docker build -t bigexchange/basic-demo-application:latest .`` 
+
+* Once the image is created, you should run the image with the command:
+
 ``docker run -itd -p 8083:8083 bigexchange/basic-demo-app:latest``
 
 The container should be then up and running, and can be connected in BigID's environment with the application framework.
