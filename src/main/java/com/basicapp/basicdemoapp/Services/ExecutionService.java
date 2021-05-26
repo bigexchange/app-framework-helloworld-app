@@ -33,7 +33,7 @@ public class ExecutionService extends AbstractExecutionService {
                 1,
                 "logged list of entity sources connections successfully!"
         );
-        bigIDProxy.updateActionStatusToBigID(actionResponseDetails);
+        bigIDProxy.updateActionStatusToBigID(executionContext.getExecutionId(), actionResponseDetails);
     }
 
     public void uploadFileToBigID(ExecutionContext executionContext){
@@ -44,7 +44,7 @@ public class ExecutionService extends AbstractExecutionService {
             writer.println("Test file uploaded!");
             writer.close();
 
-            bigIDProxy.uploadAttachment(file);
+            bigIDProxy.uploadAttachment(executionContext.getExecutionId(), file);
         } catch (IOException e){
             System.out.println("Could not upload file" + e.toString());
         }
