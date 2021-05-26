@@ -20,7 +20,6 @@ public class ReadfileService {
             while((line = reader.readLine())!= null){
                 contentBuilder.append(line);
             }
-            System.out.println(contentBuilder.toString());
         } catch (IOException ex){
             System.out.println(ex);
         }
