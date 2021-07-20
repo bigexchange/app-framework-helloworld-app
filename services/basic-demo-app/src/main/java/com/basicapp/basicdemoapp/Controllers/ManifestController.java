@@ -1,7 +1,6 @@
 package com.basicapp.basicdemoapp.Controllers;
 
 import com.basicapp.basicdemoapp.Services.ReadfileService;
-import com.bigid.appinfra.appinfrastructure.Controllers.AbstractLoggingController;
 import com.bigid.appinfra.appinfrastructure.Controllers.AbstractManifestController;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
