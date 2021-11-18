@@ -42,6 +42,15 @@
           "default_value": "identity source",
           "param_priority": "primary",
           "is_mandatory": false
+        },
+        {
+          "param_name": "additionalInfo",
+          "param_type": "String",
+          "is_cleartext": true,
+          "param_description": "An additional information for this action that does nothing",
+          "default_value": "value",
+          "param_priority": "primary",
+          "is_mandatory": false
         }
       ]
     },
