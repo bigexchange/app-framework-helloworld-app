@@ -1,6 +1,6 @@
 {
   "app_name": "Basic demo app",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "The app is an app template, created for demonstrating the capabilities of such apps",
   "category": "privacy",
   "license_type":"FREE",
@@ -40,6 +40,15 @@
           "is_cleartext": false,
           "param_description": "An Entity source connection name, which we want to receive",
           "default_value": "identity source",
+          "param_priority": "primary",
+          "is_mandatory": false
+        },
+        {
+          "param_name": "additionalInfo",
+          "param_type": "String",
+          "is_cleartext": true,
+          "param_description": "An additional information for this action that does nothing",
+          "default_value": "value",
           "param_priority": "primary",
           "is_mandatory": false
         }
