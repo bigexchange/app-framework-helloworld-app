@@ -1,10 +1,10 @@
 package com.basicapp.basicdemoapp.Services;
 
-import com.bigid.appinfra.appinfrastructure.DTO.ActionResponseDetails;
-import com.bigid.appinfra.appinfrastructure.DTO.ExecutionContext;
-import com.bigid.appinfra.appinfrastructure.DTO.StatusEnum;
-import com.bigid.appinfra.appinfrastructure.ExternalConnections.BigIDProxy;
-import com.bigid.appinfra.appinfrastructure.Services.AbstractExecutionService;
+import com.bigid.appinfra.appinfrastructure.dto.ActionResponseDetails;
+import com.bigid.appinfra.appinfrastructure.dto.ExecutionContext;
+import com.bigid.appinfra.appinfrastructure.dto.StatusEnum;
+import com.bigid.appinfra.appinfrastructure.externalconnections.BigIDProxy;
+import com.bigid.appinfra.appinfrastructure.services.AbstractExecutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.basicapp.basicdemoapp.DTO;
 
-import com.bigid.appinfra.appinfrastructure.DTO.ActionResponseDetails;
-import com.bigid.appinfra.appinfrastructure.DTO.StatusEnum;
+import com.bigid.appinfra.appinfrastructure.dto.ActionResponseDetails;
+import com.bigid.appinfra.appinfrastructure.dto.StatusEnum;
 import lombok.Data;
 
 import java.util.HashMap;

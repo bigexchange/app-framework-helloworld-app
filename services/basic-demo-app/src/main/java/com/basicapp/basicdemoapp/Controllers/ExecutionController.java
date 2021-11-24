@@ -2,11 +2,11 @@ package com.basicapp.basicdemoapp.Controllers;
 
 import com.basicapp.basicdemoapp.DTO.ActionResponseWithAdditionalDetails;
 import com.basicapp.basicdemoapp.Services.ExecutionService;
-import com.bigid.appinfra.appinfrastructure.Controllers.AbstractExecutionController;
-import com.bigid.appinfra.appinfrastructure.DTO.ActionResponseDetails;
-import com.bigid.appinfra.appinfrastructure.DTO.ExecutionContext;
-import com.bigid.appinfra.appinfrastructure.DTO.ParamDetails;
-import com.bigid.appinfra.appinfrastructure.DTO.StatusEnum;
+import com.bigid.appinfra.appinfrastructure.controllers.AbstractExecutionController;
+import com.bigid.appinfra.appinfrastructure.dto.ActionResponseDetails;
+import com.bigid.appinfra.appinfrastructure.dto.ExecutionContext;
+import com.bigid.appinfra.appinfrastructure.dto.ParamDetails;
+import com.bigid.appinfra.appinfrastructure.dto.StatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -29,7 +29,7 @@ public class ExecutionController extends AbstractExecutionController{
         switch (action) {
             case ("helloWorld"):
                 ((ExecutionService)executionService).sendIdConnections(executionContext);
-                return generateSyncSuccessMessage(executionId, "hello world!");
+                return generateSyncSuccessMessage(executionId, executionContext.getActionParams().toString());
             case ("sendFileToBigID"):
                 ((ExecutionService)executionService).uploadFileToBigID(executionContext);
                 return generateSyncSuccessMessage(executionId, "Test file uploaded successfully!");
