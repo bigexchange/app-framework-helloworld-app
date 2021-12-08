@@ -1,12 +1,12 @@
 package com.basicapp.basicdemoapp.Services;
 
-import com.bigid.appinfra.appinfrastructure.dto.ActionResponseDetails;
-import com.bigid.appinfra.appinfrastructure.dto.ExecutionContext;
-import com.bigid.appinfra.appinfrastructure.dto.StatusEnum;
-import com.bigid.appinfra.appinfrastructure.externalconnections.BigIDProxy;
-import com.bigid.appinfra.appinfrastructure.services.AbstractExecutionService;
+import com.bigid.appinfrastructure.dto.ActionResponseDetails;
+import com.bigid.appinfrastructure.dto.ExecutionContext;
+import com.bigid.appinfrastructure.dto.StatusEnum;
+import com.bigid.appinfrastructure.externalconnections.BigIDProxy;
+import com.bigid.appinfrastructure.services.AbstractExecutionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @Service
+@ComponentScan("com.bigid.appinfrastructure.externalconnections")
 public class ExecutionService extends AbstractExecutionService {
 
     private final String ID_CONNECTIONS_ENDPOINT = "id_connections";

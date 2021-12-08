@@ -1,6 +1,6 @@
 package com.basicapp.basicdemoapp.Controllers;
 
-import com.bigid.appinfra.appinfrastructure.controllers.AbstractLogoController;
+import com.bigid.appinfrastructure.controllers.AbstractLogoController;
 import org.springframework.stereotype.Controller;
 
 @Controller
