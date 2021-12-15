@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @Service
-@ComponentScan("com.bigid.appinfrastructure.externalconnections")
 public class ExecutionService extends AbstractExecutionService {
 
     private final String ID_CONNECTIONS_ENDPOINT = "id_connections";

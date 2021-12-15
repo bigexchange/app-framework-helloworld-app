@@ -68,9 +68,9 @@
 
 <!--        Use this in order to get the infra from local jar dependency (external BigID developer)-->
 <!--        <dependency>-->
-<!--            <groupId>com.bigid.appinfra</groupId>-->
+<!--            <groupId>com.bigid</groupId>-->
 <!--            <artifactId>app-infrastructure</artifactId>-->
-<!--            <version>1.0.137</version>-->
+<!--            <version>1.0.138-SNAPSHOT</version>-->
 <!--        </dependency>-->
 
     </dependencies>
@@ -104,7 +104,7 @@
 <!--                    <artifactId>app-infrastructure</artifactId>-->
 <!--                    <version>1.0.137-LOCAL</version>-->
 <!--                    <packaging>jar</packaging>-->
-<!--                    <file>${basedir}/src/main/resources/app-infrastructure-1.0.137-LOCAL.jar</file>-->
+<!--                    <file>${basedir}/src/main/resources/app-infrastructure-1.0.138-SNAPSHOT-jar-with-dependencies.jar</file>-->
 <!--                    <generatePom>true</generatePom>-->
 <!--                </configuration>-->
 <!--                <executions>-->
