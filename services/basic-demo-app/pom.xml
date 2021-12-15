@@ -61,9 +61,9 @@
         </dependency>
 
     <dependency>
-            <groupId>com.bigid.appinfra</groupId>
+            <groupId>com.bigid</groupId>
             <artifactId>app-infrastructure</artifactId>
-            <version>1.0.138</version>
+            <version>1.0.138-SNAPSHOT</version>
         </dependency>
 
 <!--        Use this in order to get the infra from local jar dependency (external BigID developer)-->
