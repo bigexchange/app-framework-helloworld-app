@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.bigid.appinfra", "com.basicapp.basicdemoapp"})
+@ComponentScan(basePackages = {"com.bigid.appinfrastructure", "com.basicapp.basicdemoapp"})
 public class BasicDemoAppApplication {
 
 	public static void main(String[] args) {

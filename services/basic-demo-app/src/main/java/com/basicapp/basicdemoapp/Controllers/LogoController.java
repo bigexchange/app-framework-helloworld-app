@@ -1,34 +1,15 @@
 package com.basicapp.basicdemoapp.Controllers;
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.MediaType;
+import com.bigid.appinfrastructure.controllers.AbstractLogoController;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StreamUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @Controller
-@Slf4j
-public class LogoController {
+class IconController extends AbstractLogoController {
+    public String getSideBarIconPath(){
+        return "demo-app-logo.jpg";
+    }
+    public String getIconPath(){
+        return "demo-app-logo.jpg";
 
-    @GetMapping(
-            value = "/assets/icon",
-            produces = MediaType.IMAGE_JPEG_VALUE
-    )
-    @ResponseBody
-    public byte[] getLogo(HttpServletResponse response) {
-        try {
-            log.info("Returning the logo!");
-            ClassPathResource image = new ClassPathResource("demo-app-logo.jpg");
-            StreamUtils.copy(image.getInputStream(), response.getOutputStream());
-        } catch (IOException ex){
-            System.out.println(ex);
-        }
-
-        return null;
     }
 }

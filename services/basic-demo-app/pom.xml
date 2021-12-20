@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.basicapp</groupId>
     <artifactId>basic-demo-app</artifactId>
-    <version>0.0.7-SNAPSHOT</version>
+    <version>0.0.8-SNAPSHOT</version>
     <name>basic-demo-app</name>
     <description>Demo project for Spring Boot</description>
 
@@ -55,23 +55,24 @@
             <version>2.10.0</version>
         </dependency>
 
-        <!--        Use this in order to get the infra from jfrog (internal BigID developer) -->
         <dependency>
-            <groupId>com.bigid.appinfra</groupId>
-            <artifactId>app-infrastructure</artifactId>
-            <version>0.0.10-SNAPSHOT</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
 
-        <!--                Use this in order to get the infra from local jar dependency (external BigID developer)-->
+    <dependency>
+            <groupId>com.bigid</groupId>
+            <artifactId>app-infrastructure</artifactId>
+            <version>1.0.138-SNAPSHOT</version>
+        </dependency>
+
+<!--        Use this in order to get the infra from local jar dependency (external BigID developer)-->
 <!--        <dependency>-->
-<!--            <groupId>com.bigid.appinfra</groupId>-->
+<!--            <groupId>com.bigid</groupId>-->
 <!--            <artifactId>app-infrastructure</artifactId>-->
-<!--            <version>0.0.6-SNAPSHOT</version>-->
-<!--            <scope>system</scope>-->
-<!--            <systemPath>-->
-<!--                ${project.basedir}/src/main/resources/dependencies/app-infrastructure/0.0.6-SNAPSHOT/app-infrastructure-0.0.6-SNAPSHOT-jar-with-dependencies.jar-->
-<!--            </systemPath>-->
+<!--            <version>1.0.138-SNAPSHOT</version>-->
 <!--        </dependency>-->
+
     </dependencies>
 
     <build>
@@ -93,6 +94,30 @@
                     </execution>
                 </executions>
             </plugin>
+
+<!--        Use this in order to get the infra from local jar dependency (external BigID developer)-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-install-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <groupId>com.bigid.appinfra</groupId>-->
+<!--                    <artifactId>app-infrastructure</artifactId>-->
+<!--                    <version>1.0.137-LOCAL</version>-->
+<!--                    <packaging>jar</packaging>-->
+<!--                    <file>${basedir}/src/main/resources/app-infrastructure-1.0.138-SNAPSHOT-jar-with-dependencies.jar</file>-->
+<!--                    <generatePom>true</generatePom>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>install-jar-lib</id>-->
+<!--                        <goals>-->
+<!--                            <goal>install-file</goal>-->
+<!--                        </goals>-->
+<!--                        <phase>validate</phase>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+
         </plugins>
     </build>
 

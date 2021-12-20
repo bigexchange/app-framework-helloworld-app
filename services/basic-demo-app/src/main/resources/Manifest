@@ -5,7 +5,6 @@
   "category": "privacy",
   "license_type":"FREE",
   "vendor": "BigID",
-  "license_verification_key": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFzaWMgZGVtbyBhcHAiLCJjYXRlZ29yeSI6IlByaXZhY3kiLCJsaWNlbnNlVHlwZSI6ImZyZWUiLCJ2ZW5kb3IiOiJCaWdJRCIsInZlcnNpb24iOiIxLjAuNCJ9.RlB2SC12KJ93t5BSeES0v0GJWj1rPzOiBSEidAaTHKN0AakuabxVrSxTVhMC4YL0xfl2pWyMROLsDPTL1pIh8LhOBLvfOBi_xtxUiXpo46VyKq5jfxayG9-FUWRhen2e0sXz6CDvN2L0vULwlEIzyt-2_zweYLkKnBoGsoKpjjtI9wYiMenvZWh7YWSBzVbmKUBIHOtxBLD0PUWUvNV0Lyl-cE414hmVg787TTejIafOG5UEMy-fn2dWoly6fZo04u3rW2USQvpOgbzhyd8t_E6PeDmgSSlorXfyucJbQvbsydKBSxPDQYtrbcjhYxrgAodIcbHOD94Pxy89SuGJ5LmHCzyln1sYxkii6NA4wxIN3xR_n2B0Askd1ncUeC0hHV8qg91NXmNqFDeUZDAnPYwTdfKtfsdbaRbjiMUo2hJYuIKy1BbDG0wi4xBXxrA-cnDB0rtR7BfGoF8oTx8NGYbuJeazENRuN3Afv_yxrd63Gxx3u9zqYKLt539NyFNjkGe4_gRz0z3jd95V5HPkf4ZKOJPqXu5NdzCb039jR4qNG5oWacYhI5bjUgRJyGe-y7FyoCohupNyhkj3dctoEVS9uwAXPN0v6kNNH1MiiFAaLk7-TT5JVCIy2bPyP4JJvb78XvpYKpRXnsacfU0_i65rgwIUAq0sEoPQnFvaONk",
   "global_params": [
     {
       "param_name": "username",
@@ -44,13 +43,47 @@
           "is_mandatory": false
         },
         {
-          "param_name": "additionalInfo",
+          "param_name": "mandatoryText",
           "param_type": "String",
           "is_cleartext": true,
-          "param_description": "An additional information for this action that does nothing",
-          "default_value": "value",
+          "param_description": "Text mandatory param",
+          "default_value": "default",
           "param_priority": "primary",
-          "is_mandatory": false
+          "is_mandatory": true,
+          "input_type": "text"
+        },
+        {
+          "param_name": "singleSelection",
+          "param_type": "String",
+          "is_cleartext": true,
+          "param_description": "A single selection field",
+          "param_priority": "primary",
+          "is_mandatory": false,
+          "default_value": "Val1",
+          "input_type": "singleSelection",
+          "input_items": ["Val1", "Val2", "Val4"]
+        },
+        {
+          "param_name": "mandatoryMultipleSelection",
+          "param_type": "String",
+          "is_cleartext": true,
+          "param_description": "Test a multi option param",
+          "default_value": "mVal1",
+          "param_priority": "primary",
+          "is_mandatory": true,
+          "input_type": "multipleSelection",
+          "input_items": ["mVal1", "mVal2", "mVal3", "mVal4", "mVal5"]
+        },
+        {
+          "param_name": "notMandatoryMultipleSelection",
+          "param_type": "String",
+          "is_cleartext": true,
+          "param_description": "Test a multi option param",
+          "default_value": "mVal3",
+          "param_priority": "primary",
+          "is_mandatory": false,
+          "input_type": "multipleSelection",
+          "input_items": ["mVal1", "mVal2", "mVal3", "mVal4", "mVal5"]
         }
       ]
     },
