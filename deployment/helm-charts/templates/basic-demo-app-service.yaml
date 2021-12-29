@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: basic-demo-app
-  name: basic-demo-app
+  name: bigid-basic-java-app
   namespace: {{ .Values.global.namespace }}
 spec:
   ports:
