@@ -6,10 +6,10 @@ import org.springframework.stereotype.Controller;
 @Controller
 class IconController extends AbstractLogoController {
     public String getSideBarIconPath(){
-        return "demo-app-logo.jpg";
+        return "side-bar-icon.png";
     }
     public String getIconPath(){
-        return "demo-app-logo.jpg";
+        return "icon.png";
 
     }
 }
