@@ -60,7 +60,7 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-    <dependency>
+        <dependency>
             <groupId>com.bigid</groupId>
             <artifactId>app-infrastructure</artifactId>
             <version>1.0.138-SNAPSHOT</version>
@@ -71,12 +71,42 @@
 <!--            <groupId>com.bigid</groupId>-->
 <!--            <artifactId>app-infrastructure</artifactId>-->
 <!--            <version>1.0.138-SNAPSHOT</version>-->
+<!--            <scope>system</scope>-->
+<!--            <systemPath>-->
+<!--                ${project.basedir}/src/main/resources/app-infrastructure-1.0.138-SNAPSHOT-jar-with-dependencies.jar-->
+<!--            </systemPath>-->
 <!--        </dependency>-->
 
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
+                <configuration>
+                    <excludes>**/*.jar</excludes>
+                </configuration>
+                <executions>
+                    <!-- to avoid bugs in some situations -->
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+
+                    <!-- create report during maven verify phase -->
+                    <execution>
+                        <id>jacoco_report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
