@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.basicapp</groupId>
     <artifactId>basic-demo-app</artifactId>
-    <version>0.0.8-SNAPSHOT</version>
+    <version>1.0.8-SNAPSHOT</version>
     <name>basic-demo-app</name>
     <description>Demo project for Spring Boot</description>
 
