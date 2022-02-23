@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: basic-demo-app
-          image: "{{ .Values.global.repository }}/basic-demo-app:{{ .Values.global.version }}-{{ .Values.global.build_date }}"
+          image: "{{ .Values.global.repository }}/basic-demo-app:{{ .Values.deployment.version }}-{{ .Values.deployment.build_date }}"
           imagePullPolicy: IfNotPresent
           readinessProbe:
             httpGet:
