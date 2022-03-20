@@ -6,7 +6,6 @@ import com.bigid.appinfrastructure.dto.StatusEnum;
 import com.bigid.appinfrastructure.externalconnections.BigIDProxy;
 import com.bigid.appinfrastructure.services.AbstractExecutionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -25,7 +24,7 @@ public class ExecutionService extends AbstractExecutionService {
     }
 
     public void sendIdConnections(ExecutionContext executionContext) {
-        String idConnections = bigIDProxy.executeHttpGet(ID_CONNECTIONS_ENDPOINT);
+        String idConnections = bigIDProxy.executeHttpGet(executionContext, ID_CONNECTIONS_ENDPOINT);
         System.out.println(idConnections);
 
         ActionResponseDetails actionResponseDetails = initializeResponse(executionContext,
@@ -33,7 +32,7 @@ public class ExecutionService extends AbstractExecutionService {
                 1,
                 "logged list of entity sources connections successfully!"
         );
-        bigIDProxy.updateActionStatusToBigID(executionContext.getExecutionId(), actionResponseDetails);
+        bigIDProxy.updateActionStatusToBigID(executionContext, actionResponseDetails);
     }
 
     public void uploadFileToBigID(ExecutionContext executionContext){
@@ -44,22 +43,22 @@ public class ExecutionService extends AbstractExecutionService {
             writer.println("Test file uploaded!");
             writer.close();
 
-            bigIDProxy.uploadAttachment(executionContext.getExecutionId(), file);
+            bigIDProxy.uploadAttachment(executionContext, file);
         } catch (IOException e){
             System.out.println("Could not upload file" + e.toString());
         }
     }
 
-    public int count(){
+    public int count(ExecutionContext executionContext){
         int counter;
-        String counterInString = bigIDProxy.getValueFromAppStorage("count");
+        String counterInString = bigIDProxy.getValueFromAppStorage(executionContext, "count");
         if (StringUtils.isEmpty(counterInString)){
             counter = 1;
-            bigIDProxy.saveInStorage("count","1");
+            bigIDProxy.saveInStorage(executionContext, "count","1");
         } else {
             counter = Integer.parseInt(counterInString);
             counter++;
-            bigIDProxy.saveInStorage("count",Integer.toString(counter));
+            bigIDProxy.saveInStorage(executionContext, "count",Integer.toString(counter));
         }
         System.out.println(counter);
         return counter;

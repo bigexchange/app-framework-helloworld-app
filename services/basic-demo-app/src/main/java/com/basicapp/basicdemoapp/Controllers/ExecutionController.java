@@ -34,7 +34,7 @@ public class ExecutionController extends AbstractExecutionController{
                 ((ExecutionService)executionService).uploadFileToBigID(executionContext);
                 return generateSyncSuccessMessage(executionId, "Test file uploaded successfully!");
             case("counter"):
-                int count = ((ExecutionService)executionService).count();
+                int count = ((ExecutionService)executionService).count(executionContext);
                 return generateSyncSuccessMessage(executionId, "Counter is at: " + count);
             case("customCredProvider"):
                 HashMap additionalData = new HashMap();
