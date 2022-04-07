@@ -1,12 +1,14 @@
-package com.basicapp.basicdemoapp.Controllers;
+package com.basicapp.basicdemoapp.controllers;
 
-import com.basicapp.basicdemoapp.DTO.ActionResponseWithAdditionalDetails;
-import com.basicapp.basicdemoapp.Services.ExecutionService;
+import com.basicapp.basicdemoapp.dto.ActionResponseWithAdditionalDetails;
+import com.basicapp.basicdemoapp.services.ExecutionService;
 import com.bigid.appinfrastructure.controllers.AbstractExecutionController;
 import com.bigid.appinfrastructure.dto.ActionResponseDetails;
 import com.bigid.appinfrastructure.dto.ExecutionContext;
 import com.bigid.appinfrastructure.dto.ParamDetails;
 import com.bigid.appinfrastructure.dto.StatusEnum;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import java.util.HashMap;
 
 @Controller
 public class ExecutionController extends AbstractExecutionController{
+    Logger logger = LoggerFactory.getLogger(ExecutionController.class);
 
     @Autowired
     public ExecutionController(ExecutionService executionService) {
@@ -37,7 +40,7 @@ public class ExecutionController extends AbstractExecutionController{
                 int count = ((ExecutionService)executionService).count(executionContext);
                 return generateSyncSuccessMessage(executionId, "Counter is at: " + count);
             case("customCredProvider"):
-                HashMap additionalData = new HashMap();
+                HashMap<String, String> additionalData = new HashMap<>();
                 additionalData.put("username", "bigid_tests");
                 additionalData.put("password", "bigid_tests");
                 putCredentialProviderCustomQuery(executionContext, additionalData);
@@ -53,7 +56,7 @@ public class ExecutionController extends AbstractExecutionController{
         }
     }
 
-    private void putCredentialProviderCustomQuery(ExecutionContext executionContext, HashMap additionalData) {
+    private void putCredentialProviderCustomQuery(ExecutionContext executionContext, HashMap<String, String> additionalData) {
         try {
              ParamDetails param = executionContext.getActionParams().get(0);
              if (param.getParamName().equals("credentialProviderCustomQuery")){
@@ -61,7 +64,7 @@ public class ExecutionController extends AbstractExecutionController{
                  additionalData.put("password", "bigidsql");
              }
          } catch (IndexOutOfBoundsException e) {
-             System.out.println("Did not receive credentialProviderCustomQuery param");
+             logger.error("Did not receive credentialProviderCustomQuery param");
          }
     }
 }

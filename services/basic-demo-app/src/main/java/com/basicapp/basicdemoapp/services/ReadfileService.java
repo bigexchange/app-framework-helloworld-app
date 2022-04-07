@@ -1,5 +1,7 @@
-package com.basicapp.basicdemoapp.Services;
+package com.basicapp.basicdemoapp.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -9,6 +11,8 @@ import java.io.InputStreamReader;
 
 @Service
 public class ReadfileService {
+    static Logger logger = LoggerFactory.getLogger(ReadfileService.class);
+    private ReadfileService() {}
 
     public static String readFileContentFromInputStream(InputStream inputStream) {
         StringBuilder contentBuilder = new StringBuilder();
@@ -21,7 +25,7 @@ public class ReadfileService {
                 contentBuilder.append(line);
             }
         } catch (IOException ex){
-            System.out.println(ex);
+            logger.error(ex.getMessage());
         }
 
         return contentBuilder.toString();

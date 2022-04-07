@@ -1,4 +1,4 @@
-package com.basicapp.basicdemoapp.Services;
+package com.basicapp.basicdemoapp.services;
 
 import com.bigid.appinfrastructure.coreclient.common.BigIdCoreApiAssetsProvider;
 import org.springframework.http.HttpHeaders;

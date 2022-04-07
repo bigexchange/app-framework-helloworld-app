@@ -1,10 +1,12 @@
-package com.basicapp.basicdemoapp.Services;
+package com.basicapp.basicdemoapp.services;
 
 import com.bigid.appinfrastructure.dto.ActionResponseDetails;
 import com.bigid.appinfrastructure.dto.ExecutionContext;
 import com.bigid.appinfrastructure.dto.StatusEnum;
 import com.bigid.appinfrastructure.externalconnections.BigIDProxy;
 import com.bigid.appinfrastructure.services.AbstractExecutionService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -15,18 +17,13 @@ import java.io.PrintWriter;
 
 @Service
 public class ExecutionService extends AbstractExecutionService {
-
-    private final String ID_CONNECTIONS_ENDPOINT = "id_connections";
-
+    Logger logger = LoggerFactory.getLogger(ExecutionService.class);
     @Autowired
     public ExecutionService(BigIDProxy bigIDProxy) {
         super(bigIDProxy);
     }
 
     public void sendIdConnections(ExecutionContext executionContext) {
-        String idConnections = bigIDProxy.executeHttpGet(executionContext, ID_CONNECTIONS_ENDPOINT);
-        System.out.println(idConnections);
-
         ActionResponseDetails actionResponseDetails = initializeResponse(executionContext,
                 StatusEnum.COMPLETED,
                 1,
@@ -45,22 +42,22 @@ public class ExecutionService extends AbstractExecutionService {
 
             bigIDProxy.uploadAttachment(executionContext, file);
         } catch (IOException e){
-            System.out.println("Could not upload file" + e.toString());
+            logger.error("Could not upload file" + e.toString());
         }
     }
 
     public int count(ExecutionContext executionContext){
+        String storageKey = "count";
         int counter;
-        String counterInString = bigIDProxy.getValueFromAppStorage(executionContext, "count");
+        String counterInString = bigIDProxy.getValueFromAppStorage(executionContext, storageKey);
         if (StringUtils.isEmpty(counterInString)){
             counter = 1;
-            bigIDProxy.saveInStorage(executionContext, "count","1");
+            bigIDProxy.saveInStorage(executionContext, storageKey,"1");
         } else {
             counter = Integer.parseInt(counterInString);
             counter++;
-            bigIDProxy.saveInStorage(executionContext, "count",Integer.toString(counter));
+            bigIDProxy.saveInStorage(executionContext, storageKey,Integer.toString(counter));
         }
-        System.out.println(counter);
         return counter;
     }
 }
