@@ -23,13 +23,9 @@ public class ExecutionService extends AbstractExecutionService {
         super(bigIDProxy);
     }
 
-    public void sendIdConnections(ExecutionContext executionContext) {
-        ActionResponseDetails actionResponseDetails = initializeResponse(executionContext,
-                StatusEnum.COMPLETED,
-                1,
-                "logged list of entity sources connections successfully!"
-        );
-        bigIDProxy.updateActionStatusToBigID(executionContext, actionResponseDetails);
+    public String fetchIdConnections(ExecutionContext executionContext) {
+        String idConnections = bigIDProxy.executeHttpGet(executionContext, "id_connections");
+        return "Fetched all the ids connections: " + idConnections;
     }
 
     public void uploadFileToBigID(ExecutionContext executionContext){
