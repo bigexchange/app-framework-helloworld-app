@@ -1,7 +1,9 @@
-package com.basicapp.basicdemoapp.Controllers;
+package com.basicapp.basicdemoapp.controllers;
 
-import com.basicapp.basicdemoapp.Services.ReadfileService;
+import com.basicapp.basicdemoapp.services.ReadfileService;
 import com.bigid.appinfrastructure.controllers.AbstractManifestController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 
@@ -10,6 +12,7 @@ import java.io.InputStream;
 
 @Controller
 public class ManifestController extends AbstractManifestController {
+    Logger logger = LoggerFactory.getLogger(ManifestController.class);
 
     @Override
     public String getManifest() {
@@ -19,7 +22,7 @@ public class ManifestController extends AbstractManifestController {
             return ReadfileService.readFileContentFromInputStream(inputStream);
 
         } catch (IOException ex){
-            System.out.println(ex);
+            logger.error(ex.getMessage());
         }
 
         return "Unable to receive manifest!";

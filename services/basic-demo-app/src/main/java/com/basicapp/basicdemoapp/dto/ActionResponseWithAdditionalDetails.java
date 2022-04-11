@@ -1,4 +1,4 @@
-package com.basicapp.basicdemoapp.DTO;
+package com.basicapp.basicdemoapp.dto;
 
 import com.bigid.appinfrastructure.dto.ActionResponseDetails;
 import com.bigid.appinfrastructure.dto.StatusEnum;
@@ -8,9 +8,9 @@ import java.util.HashMap;
 
 @Data
 public class ActionResponseWithAdditionalDetails extends ActionResponseDetails {
-    private HashMap additionalData;
+    private HashMap<String, String> additionalData;
 
-    public ActionResponseWithAdditionalDetails(String executionId, StatusEnum statusEnum, double progress, String message, HashMap additionalData) {
+    public ActionResponseWithAdditionalDetails(String executionId, StatusEnum statusEnum, double progress, String message, HashMap<String, String> additionalData) {
         super(executionId, statusEnum, progress, message);
         this.additionalData = additionalData;
     }
