@@ -14,9 +14,6 @@
     <name>basic-demo-app</name>
     <description>Demo project for Spring Boot</description>
 
-<!--    Uncomment to download from public registry-->
-<!--    <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>-->
-
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -153,5 +150,18 @@
 
         </plugins>
     </build>
+
+    <!--    Uncomment to download bigid:app-infrastructure from public registry-->
+
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <id>oss-sonatype</id>-->
+<!--            <name>oss-sonatype</name>-->
+<!--            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>-->
+<!--            <snapshots>-->
+<!--                <enabled>true</enabled>-->
+<!--            </snapshots>-->
+<!--        </repository>-->
+<!--    </repositories>-->
 
 </project>
