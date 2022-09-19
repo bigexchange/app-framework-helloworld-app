@@ -21,7 +21,7 @@
       "param_type": "String",
       "is_cleartext": false,
       "param_description": "password",
-      "default_value": "admin",
+      "default_value": "password",
       "hint": "put password here",
       "param_priority": "primary",
       "is_mandatory": false
@@ -31,7 +31,7 @@
      "param_type": "String",
      "is_cleartext": true,
      "param_description": "Username",
-     "default_value": "2222222222222_new_new",
+     "default_value": "default",
      "hint": "put username here",
      "param_priority": "primary",
      "is_mandatory": true

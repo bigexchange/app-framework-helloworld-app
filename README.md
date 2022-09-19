@@ -2,9 +2,14 @@
 
 This repository maintains a BigID basic demo application (backend only).
 The application can be taken and used as a reference for building your own custom application.
+
 ## Prerequisites
 
 - In order to build and run the application, you will need Docker.
+
+## Setting hit hooks
+
+- In order to set our custom git hooks in order to validate app before commit - [click here](hooks/README.md)
 
 ## Running the application
 * In order to create the docker image, you should run the following command when you are in the root directory of the repository:
