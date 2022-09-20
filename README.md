@@ -7,7 +7,7 @@ The application can be taken and used as a reference for building your own custo
 
 - In order to build and run the application, you will need Docker.
 
-## Setting hit hooks
+## Setting git hooks
 
 - In order to set our custom git hooks in order to validate app before commit - [click here](hooks/README.md)
 
