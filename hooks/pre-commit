@@ -13,7 +13,7 @@
 #       DockerFile
 
 REQUIRED_FILES=('./README.*' './deployment/*-compose.yaml' './deployment/helm-charts/values.yaml' './deployment/helm-charts/Chart.yaml' './services/*/DockerFile')
-VALID_VERSIONS=('dabian' 'alpine')
+VALID_VERSIONS=('debian' 'alpine')
 
 for FILE in ${REQUIRED_FILES[@]}
 do
