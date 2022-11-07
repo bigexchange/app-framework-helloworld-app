@@ -1,9 +1,0 @@
-version: '3.2'
-
-services:
-  basic-demo-app:
-    image: bigexchange/bigid-basic-demo-app:${VERSION}-{BUILD_DATE}
-    ports:
-      - "8083:8083"
-    container_name: basic-demo-app
-    restart: always
