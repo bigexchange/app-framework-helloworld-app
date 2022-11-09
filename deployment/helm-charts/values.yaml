@@ -123,11 +123,3 @@ autoscaling:
 tolerations: []
 
 affinity: {}
-
-initContainers:
-  - name: gcp
-    image: velero/velero-plugin-for-gcp:v1.0.0
-    imagePullPolicy: IfNotPresent
-    volumeMounts:
-      - mountPath: /target
-        name: plugins
