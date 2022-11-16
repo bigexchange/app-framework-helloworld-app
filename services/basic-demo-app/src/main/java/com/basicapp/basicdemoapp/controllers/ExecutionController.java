@@ -46,7 +46,7 @@ public class ExecutionController extends AbstractExecutionController{
                 putCredentialProviderCustomQuery(executionContext, additionalData);
 
                 return ResponseEntity.status(200).body(new ActionResponseWithAdditionalDetails(executionId,
-                    StatusEnum.COMPLETED, 1, "Sent Password Successfuly", additionalData));
+                    StatusEnum.COMPLETED, 1, "Sent Password Successfully", additionalData));
             default:
                 return ResponseEntity.badRequest().body(
                         new ActionResponseDetails(executionId,

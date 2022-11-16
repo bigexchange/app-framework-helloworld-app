@@ -58,12 +58,13 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
         </dependency>
 
         <dependency>
             <groupId>com.bigid</groupId>
             <artifactId>app-infrastructure</artifactId>
-            <version>1.4.158-SNAPSHOT</version>
+            <version>1.5.163-SNAPSHOT</version>
         </dependency>
 
 <!--        Use this in order to get the infra from local jar dependency (external BigID developer)-->
