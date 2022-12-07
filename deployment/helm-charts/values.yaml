@@ -22,7 +22,7 @@ image:
   repository: bigid-basic-demo-app
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.1.1"
+  tag: "1.1.0-2022-05-09"
 
 imagePullSecrets: []
 nameOverride: "basic-demo-app"
