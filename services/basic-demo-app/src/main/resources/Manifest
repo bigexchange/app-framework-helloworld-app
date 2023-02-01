@@ -145,7 +145,7 @@
     "custom_roles": [
     {
       "name": "test",
-      "permissions": ["first2","second2"]
+      "permissions": ["permission.tasks.edit"]
     }
   ]
 }
