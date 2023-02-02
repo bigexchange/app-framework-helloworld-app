@@ -4,7 +4,7 @@ import com.bigid.appinfrastructure.controllers.AbstractLogoController;
 import org.springframework.stereotype.Controller;
 
 @Controller
-class IconController extends AbstractLogoController {
+public class LogoController extends AbstractLogoController {
     public String getSideBarIconPath(){
         return "side-bar-icon.png";
     }
