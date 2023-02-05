@@ -1,4 +1,4 @@
-package com.basicapp.basicdemoapp.Controllers;
+package com.basicapp.basicdemoapp.controllers;
 
 import com.bigid.appinfrastructure.controllers.AbstractTenantConfigurationController;
 import com.bigid.appinfrastructure.dto.TenantConfiguration;
