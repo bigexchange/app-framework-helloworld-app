@@ -147,5 +147,59 @@
       "name": "test",
       "permissions": ["permission.tasks.edit"]
     }
-  ]
-}
+  ],
+  "Integrations": {
+        "catalog": {
+          "filters": [
+            {
+              "name": "Retention Policies",
+              "tag_name": "retention.policy"
+            },
+            {
+              "name": "Jurisdiction",
+              "tag_name": "jurisdiction"
+            }
+          ],
+          "columns": [
+            {
+              "name": "Retention",
+              "tag_name": "retention.policy",
+              "icon_name": "retention.policy"
+            }
+          ],
+          "object_details": [
+            {
+              "tab": {
+                "title": "Retention",
+                "deepLinkPath": "/api/v1/finding-object/",
+                "widgets": [
+                  {
+                    "widgetId": "GRID",
+                    "metadata": [
+                      {
+                        "key": "policyHits.policyName",
+                        "label": "Policy"
+                      },
+                      {
+                        "key": "policyHits.policyType",
+                        "label": "Policy Type"
+                      }
+                    ]
+                  },
+                  {
+                    "widgetId": "DATE",
+                    "metadata": [
+                      {
+                        "key": "sentToRemediation",
+                        "label": "Sent To Remediation"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+  }
+
