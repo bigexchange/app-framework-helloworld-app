@@ -148,7 +148,7 @@
       "permissions": ["permission.tasks.edit"]
     }
   ],
-  "Integrations": {
+  "integrations": {
         "catalog": {
           "filters": [
             {
@@ -167,7 +167,7 @@
               "icon_name": "retention.policy"
             }
           ],
-          "object_details": [
+          "object_details":
             {
               "tab": {
                 "title": "Retention",
@@ -198,7 +198,6 @@
                 ]
               }
             }
-          ]
         }
       }
   }
