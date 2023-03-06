@@ -1,5 +1,5 @@
 FROM public.ecr.aws/docker/library/eclipse-temurin:17-jre-alpine
 
-COPY target/basic-demo-app-2.0.169-SNAPSHOT.jar /home/basicapp.jar
+COPY target/basic-demo-app-2.0.170-SNAPSHOT.jar /home/basicapp.jar
 EXPOSE 8083
 CMD ["java","-jar","/home/basicapp.jar"]
