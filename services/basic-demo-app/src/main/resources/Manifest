@@ -121,11 +121,6 @@
     }
   ],
   "permissions": [
-  {
-        "action": "hide-ui",
-        "label": "Hide UI",
-        "description": "The app UI will not be visible"
-      },
     {
       "action": "data-owner",
       "label": "Data Owner",
