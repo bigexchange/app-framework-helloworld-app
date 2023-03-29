@@ -8,7 +8,6 @@
 # Declare variables to be passed into your templates.
 
 global:
-  namespace: apes
   nodeSelector: {}
 
 # Enable the app
@@ -17,15 +16,14 @@ enabled: true
 replicaCount: 1
 
 image:
-#  registry: 835626702473.dkr.ecr.us-east-1.amazonaws.com
-  registry: bigexchange
-  repository: bigid-basic-demo-app
-  pullPolicy: Always
+  registry: 835626702473.dkr.ecr.us-east-1.amazonaws.com
+  repository: bigexchange/bigid-basic-demo
+  pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "1.1.0-2022-05-09"
 
 imagePullSecrets: []
-nameOverride: "basic-demo-app"
+nameOverride: "basic-demo"
 fullnameOverride: "basic-demo-chart"
 
 serviceAccount:
@@ -35,10 +33,10 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: "basic-demo-app"
+  name: "basic-demo"
 
 podAnnotations:
-  ad.datadoghq.com/bigid-basic-demo-app.logs: '[{"source": "java", "service": "myApp"}]'
+  ad.datadoghq.com/bigid-basic-demo.logs: '[{"source": "java", "service": "basic-demo"}]'
 
 ## Update strategy - only really applicable for deployments with RWO PVs attached
 ## If replicas = 1, an update can get "stuck", as the previous pod remains attached to the

@@ -4,19 +4,19 @@ This chart bootstraps BigID App deployment on a [Kubernetes](http://kubernetes.i
 
 ## Installing the Chart
 
-To install the chart with the release name `basic-demo-app`:
+To install the chart with the release name `basic-demo`:
 
-```$ helm install basic-demo-app . --namespace [NAMESPACE]```
+```$ helm install basic-demo . --namespace [NAMESPACE]```
 
 ## Upgrding the chart
 
-```$ helm upgrade basic-demo-app . --namespace [NAMESPACE]```
+```$ helm upgrade basic-demo . --namespace [NAMESPACE]```
 
 ## Uninstalling the Chart
 
-```$ helm uninstall basic-demo-app --namespace [NAMESPACE]```
+```$ helm uninstall basic-demo --namespace [NAMESPACE]```
 
 ## Rollback the Chart
 
-```$ helm rollback basic-demo-app [REVISION] --namespace [NAMESPACE]```
+```$ helm rollback basic-demo [REVISION] --namespace [NAMESPACE]```
 

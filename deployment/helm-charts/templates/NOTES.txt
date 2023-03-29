@@ -1,1 +1,1 @@
-The basic-demo-app application has been installed sucessfully!
+The basic-demo application has been installed sucessfully!
