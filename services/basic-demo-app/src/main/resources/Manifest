@@ -97,17 +97,28 @@
           "input_items": ["mVal1", "mVal2", "mVal3", "mVal4", "mVal5"]
         },
         {
-          "param_name": "notMandatoryObjectType",
+          "param_name": "notMandatoryObjectParam",
           "param_type": "Object",
           "is_cleartext": true,
-          "param_description": "Test a object param",
+          "param_description": "Test object param",
+          "default_value": {
+            "field1": "val1"
+          },
+          "param_priority": "primary",
+          "is_mandatory": false
+        },
+        {
+          "param_name": "mandatoryArrayObjectParam",
+          "param_type": "Array",
+          "is_cleartext": true,
+          "param_description": "Test array object param",
           "default_value": [
             {
                 "field1": "val1"
             }
           ],
           "param_priority": "primary",
-          "is_mandatory": false
+          "is_mandatory": true
         }
       ]
     },
