@@ -3,9 +3,9 @@ package com.basicapp.basicdemoapp.controllers;
 import com.basicapp.basicdemoapp.dto.ActionResponseWithAdditionalDetails;
 import com.basicapp.basicdemoapp.services.ExecutionService;
 import com.bigid.appinfrastructure.controllers.AbstractExecutionController;
+import com.bigid.appinfrastructure.dto.ActionParamDetails;
 import com.bigid.appinfrastructure.dto.ActionResponseDetails;
 import com.bigid.appinfrastructure.dto.ExecutionContext;
-import com.bigid.appinfrastructure.dto.ParamDetails;
 import com.bigid.appinfrastructure.dto.StatusEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,7 +58,7 @@ public class ExecutionController extends AbstractExecutionController{
 
     private void putCredentialProviderCustomQuery(ExecutionContext executionContext, HashMap<String, String> additionalData) {
         try {
-             ParamDetails param = executionContext.getActionParams().get(0);
+             ActionParamDetails param = executionContext.getActionParams().get(0);
              if (param.getParamName().equals("credentialProviderCustomQuery")){
                  additionalData.put("username", "bigid");
                  additionalData.put("password", "bigidsql");
