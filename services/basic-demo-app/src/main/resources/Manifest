@@ -1,6 +1,6 @@
 {
   "app_name": "Basic demo app",
-  "version": "2.0.170",
+  "version": "2.0.174",
   "description": "The app is an app template, created for demonstrating the capabilities of such apps",
   "category": "privacy",
   "license_type":"FREE",
@@ -95,6 +95,30 @@
           "is_mandatory": false,
           "input_type": "multipleSelection",
           "input_items": ["mVal1", "mVal2", "mVal3", "mVal4", "mVal5"]
+        },
+        {
+          "param_name": "notMandatoryObjectParam",
+          "param_type": "Object",
+          "is_cleartext": true,
+          "param_description": "Test object param",
+          "default_value": {
+            "field1": "val1"
+          },
+          "param_priority": "primary",
+          "is_mandatory": false
+        },
+        {
+          "param_name": "mandatoryArrayObjectParam",
+          "param_type": "Array",
+          "is_cleartext": true,
+          "param_description": "Test array object param",
+          "default_value": [
+            {
+                "field1": "val1"
+            }
+          ],
+          "param_priority": "primary",
+          "is_mandatory": true
         }
       ]
     },
