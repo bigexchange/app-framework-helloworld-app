@@ -223,6 +223,9 @@
               }
             }
         }
-      }
+      },
+      "application_role_permissions": [{
+          "permission" : "permission.tasks.edit"
+       }]
   }
 
