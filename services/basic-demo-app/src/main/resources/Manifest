@@ -224,8 +224,12 @@
             }
         }
       },
-      "application_role_permissions": [{
-          "permission" : "permission.tasks.edit"
-       }]
+      "application_role_permissions": [
+            {"permission" : "permission.tasks.edit"},
+            {"permission" : "permission.correlationSets.read"},
+            {"permission" : "permission.accessManagement.read"},
+            {"permission" : "permission.scans.scan_profiles.create"},
+            {"permission" : "permission.scans.scan_profiles.edit"}
+       ]
   }
 
