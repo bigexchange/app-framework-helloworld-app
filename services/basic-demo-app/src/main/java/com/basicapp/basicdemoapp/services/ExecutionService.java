@@ -30,13 +30,45 @@ public class ExecutionService extends AbstractExecutionService {
         Thread newThread = new Thread(() -> {
             ActionResponseDetails actionResponseDetails = new ActionResponseDetails(executionContext.getExecutionId(), StatusEnum.IN_PROGRESS, 0, "on it");
             for (int i = 0; i < 10; i++) {
-                actionResponseDetails.setProgress(actionResponseDetails.getProgress() + 0.1);
+                if (i == 0) {
+                    SubExecutionItem subExecutionItem = new SubExecutionItem();
+                    subExecutionItem.setName("yuval");
+                    subExecutionItem.setStatusEnum(StatusEnum.IN_PROGRESS);
+                    actionResponseDetails.setSubExecutionItems(new SubExecutionItem[]{subExecutionItem});
+                }
+
+                if (i == 1) {
+                    SubExecutionItem subExecutionItem = new SubExecutionItem();
+                    subExecutionItem.setName("shai");
+                    subExecutionItem.setStatusEnum(StatusEnum.IN_PROGRESS);
+                    actionResponseDetails.setSubExecutionItems(new SubExecutionItem[]{subExecutionItem});
+                }
+
+                if (i == 4) {
+                    SubExecutionItem subExecutionItem = new SubExecutionItem();
+                    subExecutionItem.setName("yuval");
+                    subExecutionItem.setStatusEnum(StatusEnum.COMPLETED);
+                    actionResponseDetails.setSubExecutionItems(new SubExecutionItem[]{subExecutionItem});
+                }
+
+                if (i == 6) {
+                    SubExecutionItem subExecutionItem = new SubExecutionItem();
+                    subExecutionItem.setName("shai");
+                    subExecutionItem.setStatusEnum(StatusEnum.COMPLETED);
+                    actionResponseDetails.setSubExecutionItems(new SubExecutionItem[]{subExecutionItem});
+                }
+
+
                 bigIDProxy.updateActionStatusToBigID(executionContext, actionResponseDetails);
+                actionResponseDetails.setProgress(actionResponseDetails.getProgress() + 0.1);
                 try {
-                    Thread.sleep(20000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                 }
             }
+            actionResponseDetails.setProgress(1);
+            actionResponseDetails.setStatusEnum(StatusEnum.COMPLETED);
+            bigIDProxy.updateActionStatusToBigID(executionContext, actionResponseDetails);
         });
         newThread.start();
         return;
