@@ -31,8 +31,8 @@ public class ExecutionController extends AbstractExecutionController{
         String executionId = executionContext.getExecutionId();
         switch (action) {
             case ("helloWorld"):
-                String message = ((ExecutionService)executionService).fetchIdConnections(executionContext);
-                return generateSyncSuccessMessage(executionId, message);
+                ((ExecutionService)executionService).feedback(executionContext);
+                return generateAsyncSuccessMessage(executionId, "started");
             case ("sendFileToBigID"):
                 ((ExecutionService)executionService).uploadFileToBigID(executionContext);
                 return generateSyncSuccessMessage(executionId, "Test file uploaded successfully!");

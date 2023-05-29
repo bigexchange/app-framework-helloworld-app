@@ -3,8 +3,10 @@ package com.basicapp.basicdemoapp.services;
 import com.bigid.appinfrastructure.dto.ActionResponseDetails;
 import com.bigid.appinfrastructure.dto.ExecutionContext;
 import com.bigid.appinfrastructure.dto.StatusEnum;
+import com.bigid.appinfrastructure.dto.SubExecutionItem;
 import com.bigid.appinfrastructure.externalconnections.BigIDProxy;
 import com.bigid.appinfrastructure.services.AbstractExecutionService;
+import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +20,29 @@ import java.io.PrintWriter;
 @Service
 public class ExecutionService extends AbstractExecutionService {
     Logger logger = LoggerFactory.getLogger(ExecutionService.class);
+
     @Autowired
     public ExecutionService(BigIDProxy bigIDProxy) {
         super(bigIDProxy);
     }
 
-    public String fetchIdConnections(ExecutionContext executionContext) {
-        String idConnections = bigIDProxy.executeHttpGet(executionContext, "id_connections");
-        return "Fetched all the ids connections: " + idConnections;
+    public void feedback(ExecutionContext executionContext) {
+        Thread newThread = new Thread(() -> {
+            ActionResponseDetails actionResponseDetails = new ActionResponseDetails(executionContext.getExecutionId(), StatusEnum.IN_PROGRESS, 0, "on it");
+            for (int i = 0; i < 10; i++) {
+                actionResponseDetails.setProgress(actionResponseDetails.getProgress() + 0.1);
+                bigIDProxy.updateActionStatusToBigID(executionContext, actionResponseDetails);
+                try {
+                    Thread.sleep(20000);
+                } catch (InterruptedException e) {
+                }
+            }
+        });
+        newThread.start();
+        return;
     }
 
-    public void uploadFileToBigID(ExecutionContext executionContext){
+    public void uploadFileToBigID(ExecutionContext executionContext) {
         File file = new File("./test_file.txt");
         try {
             file.createNewFile();
@@ -37,22 +51,22 @@ public class ExecutionService extends AbstractExecutionService {
             writer.close();
 
             bigIDProxy.uploadAttachment(executionContext, file);
-        } catch (IOException e){
+        } catch (IOException e) {
             logger.error("Could not upload file" + e.toString());
         }
     }
 
-    public int count(ExecutionContext executionContext){
+    public int count(ExecutionContext executionContext) {
         String storageKey = "count";
         int counter;
         String counterInString = bigIDProxy.getValueFromAppStorage(executionContext, storageKey);
-        if (StringUtils.isEmpty(counterInString)){
+        if (StringUtils.isEmpty(counterInString)) {
             counter = 1;
-            bigIDProxy.saveInStorage(executionContext, storageKey,"1");
+            bigIDProxy.saveInStorage(executionContext, storageKey, "1");
         } else {
             counter = Integer.parseInt(counterInString);
             counter++;
-            bigIDProxy.saveInStorage(executionContext, storageKey,Integer.toString(counter));
+            bigIDProxy.saveInStorage(executionContext, storageKey, Integer.toString(counter));
         }
         return counter;
     }
