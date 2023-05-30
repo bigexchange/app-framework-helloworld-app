@@ -26,6 +26,11 @@ public class ExecutionService extends AbstractExecutionService {
         super(bigIDProxy);
     }
 
+    public String fetchIdConnections(ExecutionContext executionContext) {
+        String idConnections = bigIDProxy.executeHttpGet(executionContext, "id_connections");
+        return "Fetched all the ids connections: " + idConnections;
+    }
+
     public void feedback(ExecutionContext executionContext) {
         Thread newThread = new Thread(() -> {
             ActionResponseDetails actionResponseDetails = new ActionResponseDetails(executionContext.getExecutionId(), StatusEnum.IN_PROGRESS, 0, "on it");

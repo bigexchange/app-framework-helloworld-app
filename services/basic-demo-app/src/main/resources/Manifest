@@ -142,6 +142,13 @@
       "is_sync": true,
       "action_params": [
       ]
+    },
+    {
+      "action_id": "feedbackAction",
+      "description": "async action that sends a status update every 5 seconds",
+      "is_sync": false,
+      "action_params": [
+      ]
     }
   ],
   "permissions": [

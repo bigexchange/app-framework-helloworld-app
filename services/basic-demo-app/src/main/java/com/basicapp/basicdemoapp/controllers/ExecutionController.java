@@ -31,8 +31,8 @@ public class ExecutionController extends AbstractExecutionController{
         String executionId = executionContext.getExecutionId();
         switch (action) {
             case ("helloWorld"):
-                ((ExecutionService)executionService).feedback(executionContext);
-                return generateAsyncSuccessMessage(executionId, "started");
+                String message = ((ExecutionService)executionService).fetchIdConnections(executionContext);
+                return generateSyncSuccessMessage(executionId, message);
             case ("sendFileToBigID"):
                 ((ExecutionService)executionService).uploadFileToBigID(executionContext);
                 return generateSyncSuccessMessage(executionId, "Test file uploaded successfully!");
@@ -47,6 +47,9 @@ public class ExecutionController extends AbstractExecutionController{
 
                 return ResponseEntity.status(200).body(new ActionResponseWithAdditionalDetails(executionId,
                     StatusEnum.COMPLETED, 1, "Sent Password Successfully", additionalData));
+            case("feedbackAction"):
+                ((ExecutionService)executionService).feedback(executionContext);
+                return generateAsyncSuccessMessage(executionId, "started");
             default:
                 return ResponseEntity.badRequest().body(
                         new ActionResponseDetails(executionId,
