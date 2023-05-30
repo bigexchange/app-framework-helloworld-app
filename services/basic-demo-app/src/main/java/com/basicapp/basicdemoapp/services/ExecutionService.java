@@ -37,33 +37,28 @@ public class ExecutionService extends AbstractExecutionService {
             for (int i = 0; i < 10; i++) {
                 if (i == 0) {
                     SubExecutionItem subExecutionItem = new SubExecutionItem();
-                    subExecutionItem.setName("yuval");
+                    subExecutionItem.setName("file1");
                     subExecutionItem.setStatusEnum(StatusEnum.IN_PROGRESS);
                     actionResponseDetails.setSubExecutionItems(new SubExecutionItem[]{subExecutionItem});
                 }
-
                 if (i == 1) {
                     SubExecutionItem subExecutionItem = new SubExecutionItem();
-                    subExecutionItem.setName("shai");
+                    subExecutionItem.setName("file2");
                     subExecutionItem.setStatusEnum(StatusEnum.IN_PROGRESS);
                     actionResponseDetails.setSubExecutionItems(new SubExecutionItem[]{subExecutionItem});
                 }
-
                 if (i == 4) {
                     SubExecutionItem subExecutionItem = new SubExecutionItem();
-                    subExecutionItem.setName("yuval");
+                    subExecutionItem.setName("file1");
                     subExecutionItem.setStatusEnum(StatusEnum.COMPLETED);
                     actionResponseDetails.setSubExecutionItems(new SubExecutionItem[]{subExecutionItem});
                 }
-
                 if (i == 6) {
                     SubExecutionItem subExecutionItem = new SubExecutionItem();
-                    subExecutionItem.setName("shai");
+                    subExecutionItem.setName("file2");
                     subExecutionItem.setStatusEnum(StatusEnum.COMPLETED);
                     actionResponseDetails.setSubExecutionItems(new SubExecutionItem[]{subExecutionItem});
                 }
-
-
                 bigIDProxy.updateActionStatusToBigID(executionContext, actionResponseDetails);
                 actionResponseDetails.setProgress(actionResponseDetails.getProgress() + 0.1);
                 try {
@@ -76,7 +71,6 @@ public class ExecutionService extends AbstractExecutionService {
             bigIDProxy.updateActionStatusToBigID(executionContext, actionResponseDetails);
         });
         newThread.start();
-        return;
     }
 
     public void uploadFileToBigID(ExecutionContext executionContext) {
