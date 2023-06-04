@@ -4,7 +4,7 @@
   "description": "The app is an app template, created for demonstrating the capabilities of such apps",
   "category": "privacy",
   "license_type":"FREE",
-  "license_verification_key": "",
+  "license_verification_key": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYmFzaWMgZGVtcCBhcHAgdGVzdDIiLCJjYXRlZ29yeSI6IlByaXZhY3kiLCJsaWNlbnNlVHlwZSI6InBhaWQiLCJ2ZW5kb3IiOiJCaWdJRCIsInZlcnNpb24iOiIxLjAuMCIsImFjdGlvbnMiOlt7ImFjdGlvbk5hbWUiOiJoZWxsb1dvcmxkIiwiaXNQcmVtaXVtIjpmYWxzZX0seyJhY3Rpb25OYW1lIjoic2VuZEZpbGVUb0JpZ0lEIiwiaXNQcmVtaXVtIjp0cnVlfSx7ImFjdGlvbk5hbWUiOiJjb3VudGVyIiwiaXNQcmVtaXVtIjp0cnVlfV19.Q7cEzvvnz4XXan1AYDObPvLBDw_xsAemN_OSO98iOdbUEKN_LiwT_Qr9xZHG9A6yCX6ofBHgPy6Ag3dgWi6_5qwSIY_1ih6erCNwgvLjdf92ae-D6CqzF1Pr4nELaLqp9ZI-m8onLnrEj6ALcEFX61L6t-Jlxnuwv1lhixIy_7XGJEAHl0rypJ2pxHRVoMm4Y9_5B76xdx4ZZq1tGN_7gkOUfUgAYwjr6DaeszvDFAQ8gPDnR7G3b9ySqdejPv5U8Kw68Mqh9Jl1-K1KOCn0G0eAXtZGhxztNgI9a7pLA5lmmOXW4yQ962QURStQjIkyoQTtio-GyZQahV-tgU3oOV8Lup5GTOAZfg3hkD3Hw2MCB0xG9pEtG86Fl7d0IfEShXZxHzITFyjxuCSs4kXSeCQE2DOO-lie9t6jAUKT2RJ9wgVTiTZxwJAGscS0n0UKFNV3n9gd1auJzN4lG_7fnC8VbE-ko-GkMgxRW9-cdTnyrOt-Mj27bl1B1RNS8TCZTb6GRs39gKEA240rQtXvmeDiMnlmkanqIhxMCAADJC8CkiFGmafDAqAlwAI5QpVu0Q-yUSJdBCZmgEFoV0U8IhCWHm8P03loW67c3uPHh-Ps-S3ICJBbjqIrhAEUBCupXzV2odpMYMtFro4MDRIdxIij9j-67mZsmjT3cA8XBRs",
   "vendor": "BigID",
   "global_params": [
     {
@@ -16,6 +16,26 @@
       "hint": "put username here",
       "param_priority": "primary",
       "is_mandatory": false
+    },
+    {
+      "param_name": "password",
+      "param_type": "String",
+      "is_cleartext": false,
+      "param_description": "password",
+      "default_value": "password",
+      "hint": "put password here",
+      "param_priority": "primary",
+      "is_mandatory": false
+    },
+    {
+      "param_name": "username_NEW_new_new",
+      "param_type": "String",
+      "is_cleartext": true,
+      "param_description": "Username",
+      "default_value": "default",
+      "hint": "put username here",
+      "param_priority": "primary",
+      "is_mandatory": true
     }
   ],
   "actions": [
@@ -24,6 +44,47 @@
       "description": "Hello world action",
       "is_sync": true,
       "action_params": [
+        {
+          "param_name": "idConnectionName",
+          "param_type": "String",
+          "is_cleartext": false,
+          "param_description": "An Entity source connection name, which we want to receive",
+          "default_value": "identity source",
+          "param_priority": "primary",
+          "is_mandatory": false
+        },
+        {
+          "param_name": "mandatoryText",
+          "param_type": "String",
+          "is_cleartext": true,
+          "param_description": "Text mandatory param",
+          "default_value": "default",
+          "param_priority": "primary",
+          "is_mandatory": true,
+          "input_type": "text"
+        },
+        {
+          "param_name": "singleSelection",
+          "param_type": "String",
+          "is_cleartext": true,
+          "param_description": "A single selection field",
+          "param_priority": "primary",
+          "is_mandatory": false,
+          "default_value": "Val1",
+          "input_type": "singleSelection",
+          "input_items": ["Val1", "Val2", "Val4"]
+        },
+        {
+          "param_name": "mandatoryMultipleSelection",
+          "param_type": "String",
+          "is_cleartext": true,
+          "param_description": "Test a multi option param",
+          "default_value": "mVal1",
+          "param_priority": "primary",
+          "is_mandatory": true,
+          "input_type": "multipleSelection",
+          "input_items": ["mVal1", "mVal2", "mVal3", "mVal4", "mVal5"]
+        },
         {
           "param_name": "notMandatoryMultipleSelection",
           "param_type": "String",
@@ -34,7 +95,52 @@
           "is_mandatory": false,
           "input_type": "multipleSelection",
           "input_items": ["mVal1", "mVal2", "mVal3", "mVal4", "mVal5"]
+        },
+        {
+          "param_name": "notMandatoryObjectParam",
+          "param_type": "Object",
+          "is_cleartext": true,
+          "param_description": "Test object param",
+          "default_value": {
+            "field1": "val1"
+          },
+          "param_priority": "primary",
+          "is_mandatory": false
+        },
+        {
+          "param_name": "mandatoryArrayObjectParam",
+          "param_type": "Array",
+          "is_cleartext": true,
+          "param_description": "Test array object param",
+          "default_value": [
+            {
+                "field1": "val1"
+            }
+          ],
+          "param_priority": "primary",
+          "is_mandatory": true
         }
+      ]
+    },
+    {
+      "action_id": "sendFileToBigID",
+      "description": "This demonstrates an upload of a file to BigID",
+      "is_sync": true,
+      "action_params": [
+      ]
+    },
+    {
+      "action_id": "counter",
+      "description": "This demonstrates a counter using the BigID App Framework",
+      "is_sync": true,
+      "action_params": [
+      ]
+    },
+    {
+      "action_id": "customCredProvider",
+      "description": "Return username and password for mysql DB",
+      "is_sync": true,
+      "action_params": [
       ]
     }
   ],
@@ -43,6 +149,21 @@
       "action": "data-owner",
       "label": "Data Owner",
       "description": "This is an admin permission description"
+    },
+    {
+      "action": "auditor",
+      "label": "Auditor",
+      "description": "This is an owner permission description"
+    },
+    {
+      "action": "admin",
+      "label": "Admin",
+      "description": "This is an viewer permission description"
+    },
+    {
+      "action": "individual",
+      "label": "Individual",
+      "description": "This is an viewer permission description"
     }
   ],
     "custom_roles": [

@@ -1,4 +1,4 @@
-# your app Application Hooks
+# Basic Demo Application Hooks
 
 Our external application can be written by anyone.
 

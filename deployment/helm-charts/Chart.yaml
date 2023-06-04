@@ -1,6 +1,6 @@
 apiVersion: v2
-name: your app
-description: A Helm chart for your app k8s deployment
+name: basic-demo
+description: A Helm chart for basic-demo k8s deployment
 
 # A chart can be either an 'application' or a 'library' chart.
 #
