@@ -17,14 +17,14 @@ replicaCount: 1
 
 image:
   registry: 835626702473.dkr.ecr.us-east-1.amazonaws.com
-  repository: bigexchange/bigid-basic-demo
+  repository: your app image name
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "1.1.0-2022-05-09"
 
 imagePullSecrets: []
-nameOverride: "basic-demo"
-fullnameOverride: "basic-demo-chart"
+nameOverride: "your app"
+fullnameOverride: "your app"
 
 serviceAccount:
   # Specifies whether a service account should be created

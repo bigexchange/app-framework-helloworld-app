@@ -1,6 +1,6 @@
-# Basic Demo Application (Java)
+# Basic Demo Application Template (Java)
 
-This repository maintains a BigID basic demo application (backend only).
+This template repository maintains a BigID basic demo application (backend only).
 The application can be taken and used as a reference for building your own custom application.
 
 ## Prerequisites
