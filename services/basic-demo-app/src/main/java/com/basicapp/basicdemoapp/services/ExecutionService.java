@@ -1,12 +1,8 @@
 package com.basicapp.basicdemoapp.services;
 
-import com.bigid.appinfrastructure.dto.ActionResponseDetails;
-import com.bigid.appinfrastructure.dto.ExecutionContext;
-import com.bigid.appinfrastructure.dto.StatusEnum;
-import com.bigid.appinfrastructure.dto.SubExecutionItem;
+import com.bigid.appinfrastructure.dto.*;
 import com.bigid.appinfrastructure.externalconnections.BigIDProxy;
 import com.bigid.appinfrastructure.services.AbstractExecutionService;
-import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +12,8 @@ import org.springframework.util.StringUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @Service
 public class ExecutionService extends AbstractExecutionService {
@@ -32,45 +30,56 @@ public class ExecutionService extends AbstractExecutionService {
     }
 
     public void feedback(ExecutionContext executionContext) {
+        ArrayList<String> filesList = (ArrayList<String>) executionContext.getActionParams().get(0).getParamValue();
+
         Thread newThread = new Thread(() -> {
             ActionResponseDetails actionResponseDetails = new ActionResponseDetails(executionContext.getExecutionId(), StatusEnum.IN_PROGRESS, 0, "on it");
-            for (int i = 0; i < 10; i++) {
-                if (i == 0) {
-                    SubExecutionItem subExecutionItem = new SubExecutionItem();
-                    subExecutionItem.setName("file1");
-                    subExecutionItem.setStatusEnum(StatusEnum.IN_PROGRESS);
-                    actionResponseDetails.setSubExecutionItems(new SubExecutionItem[]{subExecutionItem});
+            ArrayList<SubExecutionItem> subExecutionItemsList = new ArrayList<>();
+            try {
+                for (String file : filesList) {
+                    updateBigidInitialStatuses(file, subExecutionItemsList, executionContext, actionResponseDetails);
                 }
-                if (i == 1) {
-                    SubExecutionItem subExecutionItem = new SubExecutionItem();
-                    subExecutionItem.setName("file2");
-                    subExecutionItem.setStatusEnum(StatusEnum.IN_PROGRESS);
-                    actionResponseDetails.setSubExecutionItems(new SubExecutionItem[]{subExecutionItem});
+                for (SubExecutionItem subExecutionItem : actionResponseDetails.getSubExecutionItems()) {
+                    updateBigidSubExecutionCompletedStatuses(subExecutionItem, actionResponseDetails, executionContext);
                 }
-                if (i == 4) {
-                    SubExecutionItem subExecutionItem = new SubExecutionItem();
-                    subExecutionItem.setName("file1");
-                    subExecutionItem.setStatusEnum(StatusEnum.COMPLETED);
-                    actionResponseDetails.setSubExecutionItems(new SubExecutionItem[]{subExecutionItem});
-                }
-                if (i == 6) {
-                    SubExecutionItem subExecutionItem = new SubExecutionItem();
-                    subExecutionItem.setName("file2");
-                    subExecutionItem.setStatusEnum(StatusEnum.COMPLETED);
-                    actionResponseDetails.setSubExecutionItems(new SubExecutionItem[]{subExecutionItem});
-                }
-                bigIDProxy.updateActionStatusToBigID(executionContext, actionResponseDetails);
-                actionResponseDetails.setProgress(actionResponseDetails.getProgress() + 0.1);
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                }
+                updateBigidFinalStatus(actionResponseDetails, executionContext);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-            actionResponseDetails.setProgress(1);
-            actionResponseDetails.setStatusEnum(StatusEnum.COMPLETED);
-            bigIDProxy.updateActionStatusToBigID(executionContext, actionResponseDetails);
+
         });
         newThread.start();
+    }
+
+    private void updateBigidInitialStatuses(String file, ArrayList<SubExecutionItem> subExecutionItemsList, ExecutionContext executionContext, ActionResponseDetails actionResponseDetails) throws InterruptedException {
+        Thread.sleep(5000);
+        SubExecutionItem subExecutionItem = new SubExecutionItem();
+        subExecutionItem.setName(file);
+        subExecutionItem.setStatusEnum(StatusEnum.IN_PROGRESS);
+        subExecutionItemsList.add(subExecutionItem);
+        actionResponseDetails.setSubExecutionItems(subExecutionItemsList.toArray(new SubExecutionItem[0]));
+        actionResponseDetails.setProgress(Math.min(0.9, actionResponseDetails.getProgress() + 0.1));
+        bigIDProxy.updateActionStatusToBigID(executionContext, actionResponseDetails);
+    }
+
+    private void updateBigidSubExecutionCompletedStatuses(SubExecutionItem subExecutionItem, ActionResponseDetails actionResponseDetails, ExecutionContext executionContext) throws InterruptedException {
+        Thread.sleep(5000);
+        subExecutionItem.setStatusEnum(StatusEnum.COMPLETED);
+        actionResponseDetails.setProgress(Math.min(0.9, actionResponseDetails.getProgress() + 0.1));
+        bigIDProxy.updateActionStatusToBigID(executionContext, actionResponseDetails);
+    }
+
+
+    private void updateBigidFinalStatus(ActionResponseDetails actionResponseDetails, ExecutionContext executionContext) throws InterruptedException {
+        Thread.sleep(5000);
+        actionResponseDetails.setProgress(1);
+        actionResponseDetails.setStatusEnum(StatusEnum.COMPLETED);
+        actionResponseDetails.setMessage("execution is finally over!");
+        HashMap<String, String> additionalData = new HashMap<>();
+        additionalData.put("additionDataField", "value1");
+        additionalData.put("anotherAdditionDataField", "value2");
+        actionResponseDetails.setAdditionalData(additionalData);
+        bigIDProxy.updateActionStatusToBigID(executionContext, actionResponseDetails);
     }
 
     public void uploadFileToBigID(ExecutionContext executionContext) {

@@ -148,6 +148,15 @@
       "description": "async action that sends a status update every 5 seconds",
       "is_sync": false,
       "action_params": [
+          {
+               "param_name": "filesList",
+               "param_type": "Array",
+               "is_cleartext": true,
+               "param_description": "filesForFeedbackAction",
+               "param_priority": "primary",
+               "default_value": [],
+               "is_mandatory": false
+          }
       ]
     }
   ],
