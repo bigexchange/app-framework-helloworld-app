@@ -1,6 +1,6 @@
 {
   "app_name": "Basic demo app",
-  "version": "2.0.177",
+  "version": "2.0.178",
   "description": "The app is an app template, created for demonstrating the capabilities of such apps",
   "category": "privacy",
   "license_type":"FREE",
@@ -141,6 +141,22 @@
       "description": "Return username and password for mysql DB",
       "is_sync": true,
       "action_params": [
+      ]
+    },
+    {
+      "action_id": "feedbackAction",
+      "description": "async action that sends a status update every 5 seconds",
+      "is_sync": false,
+      "action_params": [
+          {
+               "param_name": "filesList",
+               "param_type": "Array",
+               "is_cleartext": true,
+               "param_description": "filesForFeedbackAction",
+               "param_priority": "primary",
+               "default_value": [],
+               "is_mandatory": false
+          }
       ]
     }
   ],

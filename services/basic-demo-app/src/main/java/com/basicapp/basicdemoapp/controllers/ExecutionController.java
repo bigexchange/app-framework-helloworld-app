@@ -47,6 +47,9 @@ public class ExecutionController extends AbstractExecutionController{
 
                 return ResponseEntity.status(200).body(new ActionResponseWithAdditionalDetails(executionId,
                     StatusEnum.COMPLETED, 1, "Sent Password Successfully", additionalData));
+            case("feedbackAction"):
+                ((ExecutionService)executionService).feedback(executionContext);
+                return generateAsyncSuccessMessage(executionId, "started");
             default:
                 return ResponseEntity.badRequest().body(
                         new ActionResponseDetails(executionId,
