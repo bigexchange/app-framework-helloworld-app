@@ -20,7 +20,7 @@ public class ConfigureService {
     public void registerHelloWorldActionAsCommand() {
         try {
             actionsHubService.registerActionAsCommand("Basic demo app", "feedbackAction", "feedbackActionCommand");
-        } catch (ActionsHubServiceException e) {
+        } catch (Exception e) {
             logger.error("Could not register feedback action as command");
         }
     }
