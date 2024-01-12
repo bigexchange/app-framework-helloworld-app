@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/eclipse-temurin:17-jre-alpine
+FROM public.ecr.aws/docker/library/eclipse-temurin:17-jre-jammy
 
 COPY target/basic-demo-app-2.0.182-SNAPSHOT.jar /usr/src/basicapp.jar
 EXPOSE 8083
