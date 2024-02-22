@@ -25,7 +25,7 @@ public class ExecutionService extends AbstractExecutionService {
     }
 
     public String fetchIdConnections(ExecutionContext executionContext) {
-        String idConnections = bigIDProxy.executeHttpGet(executionContext, "id_connections");
+        String idConnections = bigIDProxy.executeHttpGet(executionContext, "id_connections", true);
         return "Fetched all the ids connections: " + idConnections;
     }
 
