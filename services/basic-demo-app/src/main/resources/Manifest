@@ -1,6 +1,6 @@
 {
   "app_name": "Basic demo app",
-  "version": "2.0.182",
+  "version": "2.0.204",
   "description": "The app is an app template, created for demonstrating the capabilities of such apps",
   "category": "privacy",
   "license_type":"FREE",
@@ -26,6 +26,22 @@
       "hint": "put password here",
       "param_priority": "primary",
       "is_mandatory": false
+    },
+    {
+      "param_name": "basic_auth",
+      "param_type": "Credential",
+      "is_cleartext": true,
+      "param_description": "basic auth",
+      "default_value": "",
+      "hint": "put cred here",
+      "param_priority": "primary",
+      "is_mandatory": false,
+      "input_type": "singleSelection",
+      "sub_type": "basic",
+      "app_field_identifiers_map": {
+        "username": "username",
+        "password_enc": "password"
+      }
     },
     {
       "param_name": "username_NEW_new_new",
