@@ -42,16 +42,6 @@
         "username": "username",
         "password_enc": "password"
       }
-    },
-    {
-      "param_name": "username_NEW_new_new",
-      "param_type": "String",
-      "is_cleartext": true,
-      "param_description": "Username",
-      "default_value": "default",
-      "hint": "put username here",
-      "param_priority": "primary",
-      "is_mandatory": true
     }
   ],
   "actions": [
