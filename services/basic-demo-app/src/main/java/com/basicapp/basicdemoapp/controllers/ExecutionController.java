@@ -55,10 +55,17 @@ public class ExecutionController extends AbstractExecutionController{
                 return generateAsyncSuccessMessage(executionId, "started");
             case("checkHashiProvidedCreds"):
                 ParamDetails authParam = findParameterByName(executionContext.getGlobalParams(), "basic_auth");
+                ParamDetails username = findParameterByName(executionContext.getGlobalParams(), "username");
+                ParamDetails password = findParameterByName(executionContext.getGlobalParams(), "password");
+
                 ObjectMapper mapper = new ObjectMapper();
                 try {
                     JsonNode jsonNode = mapper.readTree(authParam.getParamValue());
-                    if (jsonNode.get("username").asText().equals("bigid") && jsonNode.get("password_enc").asText().equals("password")) {
+                    if (jsonNode.get("username").asText().equals("bigid") &&
+                        jsonNode.get("password_enc").asText().equals("password") &&
+                        username.getParamValue().equals("bigid") &&
+                        password.getParamValue().equals("password")) {
+
                         log.info("Returning success response for checkHashiProvidedCreds");
                         return generateSyncSuccessMessage(executionId, "success");
                     }
