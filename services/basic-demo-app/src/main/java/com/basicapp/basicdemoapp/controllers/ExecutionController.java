@@ -4,7 +4,6 @@ import com.basicapp.basicdemoapp.dto.ActionResponseWithAdditionalDetails;
 import com.basicapp.basicdemoapp.services.ExecutionService;
 import com.bigid.appinfrastructure.controllers.AbstractExecutionController;
 import com.bigid.appinfrastructure.dto.*;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +31,8 @@ public class ExecutionController extends AbstractExecutionController{
     public ResponseEntity<ActionResponseDetails> executeAction(@RequestBody ExecutionContext executionContext) {
         String action = executionContext.getActionName();
         String executionId = executionContext.getExecutionId();
+        List<ActionParamDetails> actionParams = executionContext.getActionParams();
+
         switch (action) {
             case ("helloWorld"):
                 String message = ((ExecutionService)executionService).fetchIdConnections(executionContext);
@@ -53,6 +54,12 @@ public class ExecutionController extends AbstractExecutionController{
             case("feedbackAction"):
                 ((ExecutionService)executionService).feedback(executionContext);
                 return generateAsyncSuccessMessage(executionId, "started");
+            case ("getConfigurations"):
+                String configuration = ((ExecutionService)executionService).getConfiguration(executionContext, String.valueOf(getParamValueByKey(actionParams, "key")));
+                HashMap<String, String> configurationAdditionalData = new HashMap<>();
+                configurationAdditionalData.put("app_configuration", configuration);
+                return ResponseEntity.status(200).body(new ActionResponseWithAdditionalDetails(executionId,
+                        StatusEnum.COMPLETED, 1, "Get application configuration", configurationAdditionalData));
             case("checkHashiProvidedCreds"):
                 ParamDetails authParam = findParameterByName(executionContext.getGlobalParams(), "basic_auth");
                 ParamDetails username = findParameterByName(executionContext.getGlobalParams(), "username");
@@ -102,5 +109,16 @@ public class ExecutionController extends AbstractExecutionController{
          } catch (IndexOutOfBoundsException e) {
              logger.error("Did not receive credentialProviderCustomQuery param");
          }
+    }
+
+    public static Object getParamValueByKey(List<ActionParamDetails> actionParams, String key) {
+        if (actionParams == null || key == null) {
+            return null;
+        }
+        return actionParams.stream()
+                .filter(param -> key.equals(param.getParamName()))
+                .map(ActionParamDetails::getParamValue)
+                .findFirst()
+                .orElse(null);
     }
 }
