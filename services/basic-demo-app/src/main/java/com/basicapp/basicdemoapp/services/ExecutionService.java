@@ -3,6 +3,7 @@ package com.basicapp.basicdemoapp.services;
 import com.bigid.appinfrastructure.dto.*;
 import com.bigid.appinfrastructure.externalconnections.BigIDProxy;
 import com.bigid.appinfrastructure.services.AbstractExecutionService;
+import com.bigid.appinfrastructure.services.AppsConfigurationsManagementService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +19,28 @@ import java.util.HashMap;
 @Service
 public class ExecutionService extends AbstractExecutionService {
     Logger logger = LoggerFactory.getLogger(ExecutionService.class);
+    private final AppsConfigurationsManagementService appsConfiguration;
 
     @Autowired
-    public ExecutionService(BigIDProxy bigIDProxy) {
+    public ExecutionService(BigIDProxy bigIDProxy, AppsConfigurationsManagementService appsConfiguration) {
         super(bigIDProxy);
+        this.appsConfiguration = appsConfiguration;
     }
 
     public String fetchIdConnections(ExecutionContext executionContext) {
         String idConnections = bigIDProxy.executeHttpGet(executionContext, "id_connections", false);
         return "Fetched all the ids connections: " + idConnections;
     }
+
+    public String getConfiguration(ExecutionContext executionContext, String configuration) {
+        AppConfigurationsParams configurationProperties = AppConfigurationsParams.builder()
+                .key(configuration)
+                .executionContext(executionContext)
+                .build();
+
+        return appsConfiguration.getAppConfiguration(configurationProperties).toString();
+    }
+
 
     public void feedback(ExecutionContext executionContext) {
         ArrayList<String> filesList = (ArrayList<String>) executionContext.getActionParams().get(0).getParamValue();
