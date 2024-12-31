@@ -4,7 +4,7 @@ import com.basicapp.basicdemoapp.dto.ActionResponseWithAdditionalDetails;
 import com.basicapp.basicdemoapp.services.ExecutionService;
 import com.bigid.appinfrastructure.controllers.AbstractExecutionController;
 import com.bigid.appinfrastructure.dto.*;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.bigid.appinfrastructure.services.AppsConfigurationsManagementService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -22,16 +22,20 @@ import java.util.List;
 @Controller
 public class ExecutionController extends AbstractExecutionController{
     Logger logger = LoggerFactory.getLogger(ExecutionController.class);
+    private final AppsConfigurationsManagementService appsConfiguration;
 
     @Autowired
-    public ExecutionController(ExecutionService executionService) {
+    public ExecutionController(ExecutionService executionService, AppsConfigurationsManagementService appsConfiguration) {
         this.executionService = executionService;
+        this.appsConfiguration = appsConfiguration;
     }
 
     @Override
     public ResponseEntity<ActionResponseDetails> executeAction(@RequestBody ExecutionContext executionContext) {
         String action = executionContext.getActionName();
         String executionId = executionContext.getExecutionId();
+        List<ActionParamDetails> actionParams = executionContext.getActionParams();
+
         switch (action) {
             case ("helloWorld"):
                 String message = ((ExecutionService)executionService).fetchIdConnections(executionContext);
@@ -75,6 +79,12 @@ public class ExecutionController extends AbstractExecutionController{
                     log.info("Returning failed response for checkHashiProvidedCreds", e);
                     return generateFailedResponse(executionId, e);
                 }
+            case ("getConfigurations"):
+                String configuration = ((ExecutionService) executionService).getConfiguration(executionContext, String.valueOf(getParamValueByKey(actionParams, "key")));
+                HashMap<String, String> configurationAdditionalData = new HashMap<>();
+                configurationAdditionalData.put("app_configuration", configuration);
+                return ResponseEntity.status(200).body(new ActionResponseWithAdditionalDetails(executionId,
+                        StatusEnum.COMPLETED, 1, "Get application configuration", configurationAdditionalData));
             default:
                 return ResponseEntity.badRequest().body(
                         new ActionResponseDetails(executionId,
@@ -84,7 +94,7 @@ public class ExecutionController extends AbstractExecutionController{
         }
     }
 
-    private  ParamDetails findParameterByName(List<ParamDetails> paramList, String paramName) {
+    private ParamDetails findParameterByName(List<ParamDetails> paramList, String paramName) {
         return paramList
                 .stream()
                 .filter((item) -> item.getParamName().equals(paramName))
@@ -102,5 +112,16 @@ public class ExecutionController extends AbstractExecutionController{
          } catch (IndexOutOfBoundsException e) {
              logger.error("Did not receive credentialProviderCustomQuery param");
          }
+    }
+
+    public static Object getParamValueByKey(List<ActionParamDetails> actionParams, String key) {
+        if (actionParams == null || key == null) {
+            return null;
+        }
+        return actionParams.stream()
+                .filter(param -> key.equals(param.getParamName()))
+                .map(ActionParamDetails::getParamValue)
+                .findFirst()
+                .orElse(null);
     }
 }

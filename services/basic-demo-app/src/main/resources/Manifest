@@ -1,6 +1,6 @@
 {
   "app_name": "Basic demo app",
-  "version": "2.0.207",
+  "version": "2.1.218",
   "description": "The app is an app template, created for demonstrating the capabilities of such apps",
   "category": "privacy",
   "license_type":"FREE",
@@ -181,8 +181,38 @@
       "is_sync": true,
       "action_params": [
       ]
+    },
+    {
+      "action_id": "getConfigurations",
+      "friendly_name": "Get ENV or feature flag configuration",
+      "description": "Get ENV or feature flag configurations from BigID configuration management server",
+      "is_sync": false,
+      "action_params": [
+        {
+          "param_name": "key",
+          "param_type": "string",
+          "is_cleartext": true,
+          "param_description": "the key you want the value for",
+          "param_priority": "primary",
+          "default_value": "ENV_TEST",
+          "is_mandatory": true
+        }
+      ]
     }
   ],
+  "app_configurations": {
+    "test": {
+        "ENV_TEST": "Hi Just Test Me",
+        "ENV_TEST_BOOL": true,
+        "ANOTHER_ONE": 3,
+        "EDITABLE_SETTINGS": ["ENV_TEST", "ENV_TEST_BOOL"]
+    },
+    "default": {
+        "ENV_TEST": "Hi Just Test Me",
+        "ENV_TEST_BOOL": true,
+        "EDITABLE_SETTINGS": ["ENV_TEST_BOOL"]
+    }
+  },
   "permissions": [
     {
       "action": "data-owner",
