@@ -1,6 +1,6 @@
 {
   "app_name": "Basic demo app",
-  "version": "2.1.218",
+  "version": "2.1.224",
   "description": "The app is an app template, created for demonstrating the capabilities of such apps",
   "category": "privacy",
   "license_type":"FREE",
@@ -196,6 +196,76 @@
           "param_priority": "primary",
           "default_value": "ENV_TEST",
           "is_mandatory": true
+        }
+      ]
+    },
+    {
+      "action_id": "someObjectsAction",
+      "command_type": "objects",
+      "description": "This demonstrates an objects type command",
+      "is_sync": true,
+      "action_params": [
+        {
+            "param_name": "objectList",
+            "param_type": "Array",
+            "is_cleartext": false,
+            "param_description": "blah",
+            "default_value": [],
+            "param_priority": "primary",
+            "is_mandatory": false
+          },
+          {
+            "param_name": "dataSource",
+            "param_type": "String",
+            "is_cleartext": true,
+            "param_description": "blah",
+            "default_value": "",
+            "param_priority": "primary",
+            "is_mandatory": false
+        },
+        {
+            "param_name": "policyName",
+            "param_type": "String",
+            "is_cleartext": true,
+            "param_description": "blah",
+            "default_value": "",
+            "param_priority": "primary",
+            "is_mandatory": false
+        }
+      ]
+    },
+    {
+      "action_id": "someContainerAction",
+      "command_type": "container",
+      "description": "This demonstrates a container type command",
+      "is_sync": true,
+      "action_params": [
+        {
+            "param_name": "containerName",
+            "param_type": "String",
+            "is_cleartext": true,
+            "param_description": "blah",
+            "default_value": "",
+            "param_priority": "primary",
+            "is_mandatory": false
+          },
+          {
+            "param_name": "dataSource",
+            "param_type": "String",
+            "is_cleartext": true,
+            "param_description": "blah",
+            "default_value": "",
+            "param_priority": "primary",
+            "is_mandatory": false
+        },
+        {
+            "param_name": "policyName",
+            "param_type": "String",
+            "is_cleartext": true,
+            "param_description": "blah",
+            "default_value": "",
+            "param_priority": "primary",
+            "is_mandatory": false
         }
       ]
     }

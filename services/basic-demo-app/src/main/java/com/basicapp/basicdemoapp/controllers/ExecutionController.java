@@ -85,6 +85,14 @@ public class ExecutionController extends AbstractExecutionController{
                 configurationAdditionalData.put("app_configuration", configuration);
                 return ResponseEntity.status(200).body(new ActionResponseWithAdditionalDetails(executionId,
                         StatusEnum.COMPLETED, 1, "Get application configuration", configurationAdditionalData));
+            case ("someObjectsAction"):
+                HashMap<String, String> objectsExecutionResponsePayload = ((ExecutionService) executionService).handleObjectCommandExecution(getParamValueByKey(actionParams, "objectList"), getParamValueByKey(actionParams, "policyName"), getParamValueByKey(actionParams, "dataSource"));
+                return ResponseEntity.status(200).body(new ActionResponseWithAdditionalDetails(executionId,
+                        StatusEnum.COMPLETED, 1, "success", objectsExecutionResponsePayload));
+            case ("someContainerAction"):
+                HashMap<String, String> containerExecutionResponsePayload = ((ExecutionService) executionService).handleContainerCommandExecution(getParamValueByKey(actionParams, "containerName"), getParamValueByKey(actionParams, "policyName"), getParamValueByKey(actionParams, "dataSource"));
+                return ResponseEntity.status(200).body(new ActionResponseWithAdditionalDetails(executionId,
+                        StatusEnum.COMPLETED, 1, "success", containerExecutionResponsePayload));
             default:
                 return ResponseEntity.badRequest().body(
                         new ActionResponseDetails(executionId,

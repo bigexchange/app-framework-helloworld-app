@@ -41,6 +41,21 @@ public class ExecutionService extends AbstractExecutionService {
         return appsConfiguration.getAppConfiguration(configurationProperties).toString();
     }
 
+    public HashMap<String, String> handleObjectCommandExecution(Object objectList, Object policyName, Object dataSource) {
+        HashMap<String, String> objectsCommandResponse = new HashMap<>();
+        objectsCommandResponse.put("objectList", objectList.toString());
+        objectsCommandResponse.put("policyName", policyName.toString());
+        objectsCommandResponse.put("dataSource", dataSource.toString());
+        return objectsCommandResponse;
+    }
+
+    public HashMap<String, String> handleContainerCommandExecution(Object containerName, Object policyName, Object dataSource) {
+        HashMap<String, String> objectsCommandResponse = new HashMap<>();
+        objectsCommandResponse.put("objectList", containerName.toString());
+        objectsCommandResponse.put("policyName", policyName.toString());
+        objectsCommandResponse.put("dataSource", dataSource.toString());
+        return objectsCommandResponse;
+    }
 
     public void feedback(ExecutionContext executionContext) {
         ArrayList<String> filesList = (ArrayList<String>) executionContext.getActionParams().get(0).getParamValue();
