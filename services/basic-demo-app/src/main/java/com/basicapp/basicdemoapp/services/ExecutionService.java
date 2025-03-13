@@ -51,7 +51,7 @@ public class ExecutionService extends AbstractExecutionService {
 
     public HashMap<String, String> handleContainerCommandExecution(Object containerName, Object policyName, Object dataSource) {
         HashMap<String, String> objectsCommandResponse = new HashMap<>();
-        objectsCommandResponse.put("objectList", containerName.toString());
+        objectsCommandResponse.put("containerName", containerName.toString());
         objectsCommandResponse.put("policyName", policyName.toString());
         objectsCommandResponse.put("dataSource", dataSource.toString());
         return objectsCommandResponse;
