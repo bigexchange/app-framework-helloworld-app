@@ -3,8 +3,8 @@
   "version": "2.1.224",
   "description": "The app is an app template, created for demonstrating the capabilities of such apps",
   "category": "privacy",
-  "license_type":"FREE",
-  "license_verification_key": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFzaWMgZGVtbyBhcHAiLCJjYXRlZ29yeSI6IlByaXZhY3kiLCJsaWNlbnNlVHlwZSI6ImZyZWUiLCJ2ZW5kb3IiOiJCaWdJRCIsInZlcnNpb24iOiIyLjAuMTc2In0.bd3O4hFZ6lLioN8pfvt5sXe2D7o6-0A2Uqc9t-q2z1ovKyPxyxEUut4BijiZKKCo-_ecPCRfb0UkI-AaP1v3SIzqaUA7p0N6ppEvq28GxleNJq7XLnFtz7Vo0N-VMUWGqygTt_Gy2da8oTfRn4BKXO6iPjQtqMkhBczKD_fdSc1J0ZzI5c6jAghii8RzW1INZ2n36ojuNAj5hWdOuM7HmWTJoto3Ewv9MsIiQjbIXfBjtOOMOZBVxuDGDpvx5yzPb5h59TBv30thOg7pG9_vB4hF_IGzu61JZPKFx7IqmkP9eQAfYwZJVK8rJaZ1Sy8kgrzHY58tf8a-f4Rcemv57HmVPUJSoIVPV-7Ek2qs5BVY-xSQIMzheQ14jZbrcqOjzaDiBGic8gKz8dB7QFBcitWsykv8wBHJccJjlCXmMzURjAzy9CoCoJDH65zSS7aEXzjCARV6gHdQm2xPlX9L-vwI5T8CqNwNktmXm2AYSItJBdk_u5Qmkb87hH8Ef-4cztE1Hp5nUaogXNJfBGIGIQoTnFUAFKapyOdcaJ_qyO-sy65haHy3IvGUKa5fEQ7amnfXUG6wkDmQzm6KUUNRt30tXdOkKhyhUBIP1KmJFwfcEBWzoGzV5zg_NKf0oAFdUOZzIdmR6_cuhukS81aJ6qZgBGST7zk7Af6X8lgWZtM",
+  "license_type":"PAID",
+  "license_verification_key": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFzaWMgZGVtbyBhcHAiLCJjYXRlZ29yeSI6IlByaXZhY3kiLCJsaWNlbnNlVHlwZSI6InBhaWQiLCJ2ZW5kb3IiOiJCaWdJRCIsInZlcnNpb24iOiIyLjAuMjA0In0.ADrD0mhRjhBW2mAeDqyqYaLlNX79FVC8Qx9vslcUDVWUtkbslwg18wPzVFsAllBJoV0Wm4wtkjjTnyyTzYcfgj1yJRX5zGwlwp4IDz3k8nHFxl8a5WWgGVL1ElswUpJvXU2Ci4VlOYhsuk7hbvWwsmGEIoA5fqCcaxKixLa-K0B4J2Vdpt6QIDUtgc51FIWjBa2LjKsiFbzPwJZnAOvDl3mUZOkaG8v9QG2G4QIOWEgqjzC1Sy4s-LNwjMFXMWe9eH4bOdrwTUGGRNj6U6auDYWhuDA1dtH0P-veJ2slPR_sr5vYn4CQ3YnHiwpgMs3hyibKfSreePdgWV_kSkWevS93xqgKVW6mgd9ihvX1tFg5ehorB3StiskFK9PKXUDOi5LdqTVMY6RQ59M02_YNBJK4o8lP0Qxv0-ba-fu9eyEbcLIhSh35mpZjx-DQQH94sEceEnG08PlT3lrzVCg9lXvOYT6DM9bSMqkPzVwp7ZZdZYR9q7KdzVOnu5-ADHMPrplheIu7VkZc3lM0G4UFvVJ3X5srzgPqjOxo9JGMZmmxeGYDq-0oik2Shan2OlZNdJ2sAhrVy_G_aoxOQV2O41kIJIKWaMLOW-I26K7ou4SLVuYGHHlBHX9RStEffDHEH9HXBrNv93LNXFXfA4YXSygJLUAl2niFT5I5BQNm11g",
   "vendor": "BigID",
   "global_params": [
     {
@@ -42,16 +42,6 @@
         "username": "username",
         "password_enc": "password"
       }
-    },
-    {
-      "param_name": "username_NEW_new_new",
-      "param_type": "String",
-      "is_cleartext": true,
-      "param_description": "Username",
-      "default_value": "default",
-      "hint": "put username here",
-      "param_priority": "primary",
-      "is_mandatory": true
     }
   ],
   "actions": [
