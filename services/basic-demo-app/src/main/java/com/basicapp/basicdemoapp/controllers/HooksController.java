@@ -1,18 +1,17 @@
 package com.basicapp.basicdemoapp.controllers;
 
+import com.bigid.appinfrastructure.controllers.AbstractInstallationHookController;
+import com.bigid.appinfrastructure.dto.ExecutionContext;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
-@Controller
-public class HooksController {
+@RestController
+public class HooksController extends AbstractInstallationHookController {
 
-    @PostMapping("/post-install")
-    @ResponseStatus(HttpStatus.OK)
-    public void postInstallation() {
+
+    @Override
+    public void executePostInstall(Boolean isUpdate, ExecutionContext executionContext) {
         log.info("postInstallation hook was called");
     }
 }
