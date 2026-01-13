@@ -70,13 +70,13 @@ public class ExecutionController extends AbstractExecutionController{
                         username.getParamValue().equals("bigid") &&
                         password.getParamValue().equals("password")) {
 
-                        log.info("Returning success response for checkHashiProvidedCreds");
+                        logger.info("Returning success response for checkHashiProvidedCreds");
                         return generateSyncSuccessMessage(executionId, "success");
                     }
-                    log.info("Returning failed response for checkHashiProvidedCreds");
+                    logger.info("Returning failed response for checkHashiProvidedCreds");
                     return generateFailedResponse(executionId, new RuntimeException("Right credentials was not provided to the app by orch/vault"));
                 } catch (Exception e) {
-                    log.info("Returning failed response for checkHashiProvidedCreds", e);
+                    logger.info("Returning failed response for checkHashiProvidedCreds", e);
                     return generateFailedResponse(executionId, e);
                 }
             case ("getConfigurations"):
