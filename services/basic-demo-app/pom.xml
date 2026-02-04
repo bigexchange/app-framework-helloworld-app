@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.basicapp</groupId>
     <artifactId>basic-demo-app</artifactId>
-    <version>2.3.246-SNAPSHOT</version>
+    <version>2.3.247-SNAPSHOT</version>
     <name>basic-demo-app</name>
     <description>Demo project for Spring Boot</description>
 
@@ -66,7 +66,7 @@
         <dependency>
             <groupId>com.bigid</groupId>
             <artifactId>app-infrastructure</artifactId>
-            <version>2.4.1.246-RELEASE</version>
+            <version>3.0.247-RELEASE</version>
         </dependency>
 
         <!-- Force newer ASM version for Java 25 support -->
